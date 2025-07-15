@@ -1,20 +1,20 @@
 {
   "type": "SimpleWidgetType",
   "name": {
-    "ru": "Футер"
+    "ru": "Карточка товара"
   },
-  "handle": "le-footer",
+  "handle": "le-product-card",
   "description": {
-    "ru": "Подвал сайта"
+    "ru": "Карточка товара"
   },
   "page_kinds": [
-    "all"
+    "product"
   ],
   "widget_list_kinds": [
-    "footer"
+    "content"
   ],
   "generation": 4,
-  "widget_category_handle": "footers",
+  "widget_category_handle": "products-cards",
   "libraries": [
     "jquery",
     "my-layout"

@@ -22,12 +22,12 @@
       "search_count": 12,
       "blog_size": "8",
       "product_not_available": "shown",
-      "layout-content-max-width": "1240",
-      "delta_sidebar": "1",
+      "layout-content-max-width": 1920,
+      "delta_sidebar": 1,
       "type_sidebar": "sticky",
       "sidebar_index_position": "left",
       "sidebar_collection_position": "left",
-      "sidebar_collection_show": true,
+      "sidebar_collection_show": false,
       "sidebar_cart_position": "left",
       "sidebar_product_position": "left",
       "sidebar_blog_position": "left",
@@ -41,7 +41,7 @@
       "heading-ratio": 1.5,
       "heading-weight": 600,
       "color-preset": "custom",
-      "_settings_version": 1752478566.4136484
+      "_settings_version": 1752562844.279043
     }
   },
   "remote_theme_id": 653,
