@@ -1,0 +1,31 @@
+{
+  "ru": {
+    "block_list": "Список соц. сетей",
+    "block": "Иконку",
+    "blocks": "Иконки",
+    "logo_recommended_width": "Рекомендуемая ширина изображения: 512 px",
+    "category_depth": "Уровни вложенности категорий"
+  },
+  "ua": {
+    "block_list": "Список соц. мереж",
+    "block": "Іконку",
+    "blocks": "Іконки",
+    "logo_recommended_width": "Рекомендована ширина зображення: 512 px",
+    "category_depth": "Рівні вкладеності категорій"
+  },
+  "en": {
+    "block_list": "List of social networks",
+    "block": "Icon",
+    "blocks": "Icons",
+    "logo_recommended_width": "Recommended image width: 512 px",
+    "category_depth": "Nesting levels of categories"
+  },
+  "es": {
+    "block_list": "Lista de redes sociales",
+    "block": "Icono",
+    "blocks": "Iconos",
+    "logo_recommended_width": "Ancho de imagen recomendado: 512 px",
+    "category_depth": "Niveles de anidación de categorías"
+  }
+}
+

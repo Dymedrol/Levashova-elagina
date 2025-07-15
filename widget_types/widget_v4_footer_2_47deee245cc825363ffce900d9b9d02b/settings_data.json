@@ -1,0 +1,19 @@
+{
+    "layout-wide-bg":false,
+    "layout-wide-content":false,
+    "layout-pt":2,
+    "layout-pb":2,
+    "hide-mobile":false,
+    "hide-desktop":false,
+    "menu_handle":"main-menu",
+    "copyright-text":{
+      "ru":"<a href='https://www.insales.ru/' target='_blank'>Интернет-магазин создан на inSales</a>",
+      "en":"<a href='https://www.insales.com/en' target='_blank'>Online store created on inSales</a>",
+      "ua":"<a href='https://www.insales.com/ua' target='_blank'>Інтернет-магазин створений на inSales</a>",
+      "es":"<a href='https://www.insales.com' target='_blank'>Tienda online creada en inSales</a>",
+      "ky":"<a href='https://www.insales.kg/' target='_blank'>Интернет-магазин создан на inSales</a>",
+      "be":"<a href='https://www.insales.by/' target='_blank'>Интернет-магазин создан на inSales</a>",
+      "kz":"<a href='https://www.insales.kz/' target='_blank'>Интернет-магазин создан на inSales</a>"
+    },
+    "align-text":"left"
+  }

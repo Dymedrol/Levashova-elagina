@@ -1,0 +1,21 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "Футер"
+  },
+  "handle": "le-footer",
+  "description": {
+    "ru": "Подвал сайта"
+  },
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "footer"
+  ],
+  "generation": 4,
+  "widget_category_handle": "footers",
+  "libraries": [
+    "jquery"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "Средний подвал сайта"
+  },
+  "handle": "widget_v4_footer_2_47deee245cc825363ffce900d9b9d02b",
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "footer"
+  ],
+  "generation": 4,
+  "widget_category_handle": "footers",
+  "libraries": [
+    "my-layout"
+  ]
+}

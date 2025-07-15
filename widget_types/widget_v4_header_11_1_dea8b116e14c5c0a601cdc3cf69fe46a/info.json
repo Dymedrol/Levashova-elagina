@@ -1,0 +1,21 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "Шапка с выезжающим сайдбаром"
+  },
+  "handle": "widget_v4_header_11_1_dea8b116e14c5c0a601cdc3cf69fe46a",
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "header"
+  ],
+  "generation": 4,
+  "widget_category_handle": "headers",
+  "libraries": [
+    "commonjs_v2",
+    "cut-list",
+    "jquery",
+    "my-layout"
+  ]
+}

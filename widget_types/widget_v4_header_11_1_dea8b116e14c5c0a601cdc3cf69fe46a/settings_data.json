@@ -1,0 +1,20 @@
+{
+  "logo-max-width": 220,
+  "layout-pt": 1,
+  "layout-pb": 1,
+  "hide-mobile": false,
+  "hide-desktop": false,
+  "layout-wide-bg": true,
+  "layout-wide-content": false,
+  "hide-search": false,
+  "hide-language": false,
+  "hide-compare": false,
+  "hide-personal": false,
+  "menu-1": "main-menu",
+  "bage-bg": "#EE632C",
+  "catalog-location": "show-immediately",
+  "mobile-panel-right-btn": "cart",
+  "live-search": false,
+  "category-depth": 3
+}
+

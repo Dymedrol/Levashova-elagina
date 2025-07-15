@@ -1,0 +1,22 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "Хедер"
+  },
+  "handle": "le-header",
+  "description": {
+    "ru": "Хедер страницы"
+  },
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "header"
+  ],
+  "generation": 4,
+  "widget_category_handle": "headers",
+  "libraries": [
+    "jquery",
+    "my-layout"
+  ]
+}

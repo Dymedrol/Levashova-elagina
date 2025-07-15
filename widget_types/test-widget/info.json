@@ -1,0 +1,19 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "Test"
+  },
+  "handle": "test-widget",
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "header"
+  ],
+  "generation": 4,
+  "widget_category_handle": "headers",
+  "libraries": [
+    "jquery",
+    "my-layout"
+  ]
+}
