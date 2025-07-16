@@ -3,9 +3,9 @@
   "name": {
     "ru": "Карточка товара"
   },
-  "handle": "le-product-card",
+  "handle": "widget_v4_product_6_e94473bd720fb83e48d88274ee188378",
   "description": {
-    "ru": "Карточка товара"
+    "ru": "Карточка товара с галереей (превью снизу)"
   },
   "page_kinds": [
     "product"

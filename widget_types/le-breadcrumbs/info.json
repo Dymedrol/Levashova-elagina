@@ -1,0 +1,24 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "Хлебный крошки"
+  },
+  "handle": "le-breadcrumbs",
+  "description": {
+    "ru": "Хлебный крошки"
+  },
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "top_panel",
+    "before_content",
+    "content",
+    "after_content"
+  ],
+  "generation": 4,
+  "widget_category_handle": "navigation",
+  "libraries": [
+    "my-layout"
+  ]
+}

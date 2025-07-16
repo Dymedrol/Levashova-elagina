@@ -244,10 +244,10 @@
       "controls controls"
       "bundle bundle"
       "short-description short-description";
-    grid-template-columns: 1fr max-content;
+      grid-template-columns: 1fr max-content;
 
-    @media(max-width: 767px) {
-      grid-template-areas:
+      @media(max-width: 767px) {
+        grid-template-areas:
         "title title"
         "price price"
         "rating sku"
@@ -256,7 +256,7 @@
         "controls controls"
         "bundle bundle"
         "short-description short-description";
-    }
+      }
 
     &__area-rating {
       grid-area: rating;
@@ -342,7 +342,7 @@
       }
     }
 
-    .hidden {
+   .hidden {
       display: block;
     }
   }
@@ -368,7 +368,7 @@
     box-shadow: none;
     color: var(--color-text);
     cursor: pointer;
-  }
+   }
 
   /* SKU */
   &__sku {
@@ -499,7 +499,7 @@
   }
 
   /* AVAILABLE */
-  &__available {
+   &__available {
     position: absolute;
     top: 50%;
     left: 0;
@@ -1189,7 +1189,7 @@
     &.is-no-manager-photo {
       grid-template-areas: 'name' 'text';
       grid-template-columns: auto;
-      column-gap: 0;
+        column-gap: 0;
     }
   }
 
@@ -1553,9 +1553,9 @@
     padding: 1px;
     border-radius: 50%;
     img {
-      width: 30px;
+  	  width: 30px;
       height: 30px;
-      border-radius: 50%;
+ 	    border-radius: 50%;
     }
   }
 }
@@ -1589,11 +1589,11 @@ video {
   min-width: var(--buy-btn-min-width);
   &:hover {
     background: var(--bg-major-shade);
-  }
+ }
 }
-.product__marketplace-button .button__icon {
-  margin-right: 8px;
-}
+ .product__marketplace-button .button__icon {
+   margin-right: 8px;
+ }
 
 .product__service-button,
 .product__buy-one-click  {
@@ -1627,7 +1627,7 @@ video {
 
 .product__favorites-btn.favorites-added {
   .icon-favorites-o {
-    display:none;
+     display:none;
   }
   .icon-favorites-f {
     display:block;

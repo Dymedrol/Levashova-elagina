@@ -1,876 +1,151 @@
-{% include 'system_bnpl-modal' %}
+<div class="product-page">
+  <h1 class="product-title">{{ product.title }}</h1>
 
-{% assign is_show_marketplace_button = false %}
-{% if product.show_cart_button == false and product.show_service_button == false and product.show_quick_checkout_button == false and product.show_marketplace_button %}
-  {% assign is_show_marketplace_button = true %}
-{% endif %}
-
-{% assign hide_all_buttons = false %}
-{% if product.show_cart_button == false and product.show_service_button == false and product.show_quick_checkout_button == false and product.show_marketplace_button == false %}
-  {% assign hide_all_buttons  = true %}
-{% endif %}
-
-{% assign is_buy_button = false %}
-{% if product.show_cart_button or product.show_quick_checkout_button %}
-  {% assign is_buy_button = true %}
-{% endif %}
-
-{% capture preorder_button %}
-  <button
-    data-product-card-preorder
-    class="button button_size-xl button_wide product__preorder-btn"
-    type="button">{{ messages.pre_order }}</button>
-{% endcapture %}
-
-{% capture service_button %}
-  <div class="product__service-button">
-    <button type="button" class="button button_size-xl product__service-button__btn"
-      data-quick-checkout="[data-product-id='{{ product.id }}']"
-      data-quick-checkout-modal-handle="service" >
-        <span class="product__service-button__btn-label">{{ messages.buy_button_action }}</span>
-    </button>
-  </div>
-{% endcapture %}
-
-{% capture quick_checkout_product_button %}
-  <div class="product__buy-one-click {% if product.show_cart_button %}is-secondary-button{% endif %}">
-    <span class="button button_wide button_size-xl" data-quick-checkout="[data-product-id='{{ product.id }}']">
-      {{ messages.btn_buy_one_click_text }}
-    </span>
-  </div>
-{% endcapture %}
-
-{% capture cart_button %}
-  <div class="add-cart-counter" data-add-cart-counter='{"step": "1"}'>
-    <button
-      type="button"
-      class="button button_size-xl button_wide add-cart-counter__btn"
-      data-add-cart-counter-btn>
-      <span class="add-cart-counter__btn-label">{{ messages.btn_buy_text }}</span>
-    </button>
-    <div class="add-cart-counter__controls">
-      <button
-        data-add-cart-counter-minus
-        class="button button_size-xl button_wide  add-cart-counter__controls-btn"
-        type="button">-</button>
-      <a href="{{cart_url}}" class="button button_size-xl  add-cart-counter__detail">
-        <span class="add-cart-counter__detail-text">{{ messages.btn_buy_active_text }}
-          <span data-add-cart-counter-count></span>
-          {{ product.unit }}</span>
-        <span class="add-cart-counter__detail-dop-text">{{ messages.btn_buy_active_detail }}</span>
-      </a>
-      <button
-        data-add-cart-counter-plus
-        class="button button_size-xl  add-cart-counter__controls-btn"
-        type="button">+<span class="fixed-add-text">
-        1 {{ product.unit }}</span>
-      </button>
+  {% if product.images.size > 0 %}
+    <div class="product-gallery">
+      {% for image in product.images %}
+        <img src="{{ image.medium_url }}" alt="{{ product.title }}" class="product-image" />
+      {% endfor %}
     </div>
-  </div>
-{% endcapture %}
+  {% endif %}
 
-{% capture marketplace_button %}
-  <a href="" target="_blank" class="button button_wide button_size-xl product__marketplace-button ozon-link" data-product-card-ozon-link style="display: none;">
-    <span class="button__icon">
-      {% include 'system_svg_icons', name: 'ozon' %}
-    </span>
-    {{ widget_messages.button_ozon }}
-  </a>
-
-  <a href="" target="_blank" class="button button_wide button_size-xl product__marketplace-button wildberries-link" data-product-card-wildberries-link style="display: none;">
-    <span class="button__icon">
-      {% include 'system_svg_icons', name: 'wildberries' %}
-    </span>
-    {{ widget_messages.button_wildberries }}
-  </a>
-{% endcapture %}
-
-{% capture stickers %}
-  <div class="stickers">
-    {% include 'system_stickers', sticker_class: 'sticker', sticker_property: 'label' %}
-    <div
-      class="sticker sticker-sale"
-      data-product-card-sale-value
-      data-sticker-title="sticker-sale"></div>
-    <div class="sticker sticker-preorder" data-sticker-title="sticker-preorder">{{ messages.pre_order }}</div>
-  </div>
-{% endcapture %}
-
-<div
-  data-product-id="{{ product.id }}"
-  data-product-updated-at="{{ product.updated_at }}"
-  data-video-size="{{ product.video_links.size }}"
-  data-product-json="{{ product|json|escape }}"
-  data-gallery-type="{% if widget_settings.show-selected-variant-photos %}variant-photos{% else %}all-photos{% endif %}"
-  class="product {% if product.is_bundle %}is-bundle{% endif%} {% if settings.product_not_available == "shown" and is_buy_button %} is-zero-count-shown {% endif %} {% if settings.product_not_available == "preorder" and is_buy_button %} is-zero-count-preorder {% endif %} {% if settings.product_not_available == "hidden" or is_buy_button == false %} is-zero-count-hidden {% endif %} {% if product.show_variants? and product.variants.size > 1 %}is-more-variants{% endif %} {% if account.forbid_order_over_existing %}is-forbid-order-over-existing{% endif %} {% if is_show_marketplace_button %} is-show-marketplace-button {% endif %} {% if hide_all_buttons %} hide-all-buttons {% endif %}">
-  <div class="product__area-photo">
-    <span class="button button_size-m product__back-btn">
-      <span class="product__user-btn-icon icon-arrow-left"></span>
-    </span>
-    {% if settings.compare_enabled == null or settings.compare_enabled %}
-      {% if widget_settings.product-hide-compare != true %}
-        {% unless product.is_bundle %}
-          <span data-compare-trigger="{{ product.id }}" class="button button_size-m product__compare-btn">
-            <span class="product__user-btn-icon icon-compare"></span>
-          </span>
-        {% endunless %}
-      {% endif %}
-    {% endif %}
-    {% if product.images.size > 1 or product.video_links.size > 0 %}
-      <div class="product__gallery js-product-gallery">
-        <div style="display:none" class="js-product-all-images {% if widget_settings.video-before-image and product.video_links.size > 0 %}video-first{% endif %} ">
-          {% capture images %}
-            {% for image in product.images %}
-              {% assign img_title = product.title | escape %}
-              {% if image.title.size > 0 %}
-                {% assign img_title = image.title | escape %}
-              {% endif %}
-              <div class="splide__slide product__slide-main" data-product-img-id="{{ image.id }}">
-                <a
-                  class="img-ratio img-fit product__photo"
-                  data-fslightbox="product-photos-lightbox"
-                  data-type="image"
-                  href="{{image.original_url}}">
-                  <div class="img-ratio__inner">
-                    {% if image.original_url contains 'no_image' %}
-                      <picture>
-                        <img src="{{ image.original_url }}" alt="{{ img_title }}">
-                      </picture>
-                    {% else %}
-                      <picture>
-                        <source
-                          srcset="{{ image.original_url | image_url: 1000, format: 'webp', resizing_type: 'fit_width', quality: 100 }}"
-                          type="image/webp"
-                          loading="lazy">
-                        <img
-                          src="{{ image.original_url | image_url: 1000, resizing_type: 'fit_width', quality: 100 }}"
-                          loading="lazy"
-                          alt="{{ img_title }}" />
-                      </picture>
-                      {% comment %}
-                      {{ image.original_url | webp_picture_tag: 1000, alt: img_title, title: img_title }}
-                      {% endcomment %}
-                    {% endif %}
-                  </div>
-                </a>
-              </div>
-              <div class="splide__slide product__slide-tumbs js-product-gallery-tumbs-slide" data-product-img-id="{{ image.id }}">
-                <div class="img-ratio img-ratio_contain product__photo-tumb">
-                  <div class="img-ratio__inner">
-                    {% if image.original_url contains 'no_image' %}
-                      <picture>
-                        <img src="{{ image.original_url }}" alt="{{ img_title }}">
-                      </picture>
-                    {% else %}
-                      <picture>
-                        <source
-                          srcset="{{ image.original_url | image_url: 150, format: 'webp', resizing_type: 'fit_width', quality: 100 }}"
-                          type="image/webp"
-                          loading="lazy">
-                        <img
-                          src="{{ image.original_url | image_url: 150, resizing_type: 'fit_width', quality: 100 }}"
-                          loading="lazy"
-                          alt="{{ img_title }}" />
-                      </picture>
-                      {% comment %}
-                      {{ image.original_url | webp_picture_tag: 150, alt: img_title, title: img_title }}
-                      {% endcomment %}
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-          {% endcapture %}
-          {% capture videos %}
-            {% for link in product.video_links %}
-              {% assign video_id = forloop.index | prepend: 'video-' %}
-              <div class="splide__slide product__slide-main play-video" data-product-img-id="{{ forloop.index0 }}">
-
-                {% if link.url contains "https://static.insales-cdn.com" %}
-                  <a
-                    class="img-ratio img-fit product__photo"
-                    data-fslightbox="product-photos-lightbox"
-                    data-type="video"
-                    href="{{ link.url }}">
-                    <div class="img-ratio__inner">
-                    <video
-                      autoplay="true"
-                      oncanplay="this.muted=true"
-                      muted="true"
-                      loop="true"
-                      playsinline="true"
-                      width="100%"
-                      class="lazy"
-                      preload="metadata"
-                      id="w">
-                      <source src="{{link.url}}" type="video/mp4">
-                    </video>
-                    </div>
-                  </a>
-                {% else %}
-
-                  <a
-                    class="img-ratio img-fit product__photo"
-                    data-alt="{{ img_title }}"
-                    data-fslightbox="product-photos-lightbox"
-                    data-type="sourse"
-                    href="#{{ video_id }}">
-                    <div class="control play">
-                      <span class="center"></span>
-                    </div>
-                    <div
-                      class="img-ratio__inner">
-                      <img src="{{ link.url | video_preview_by_url }}" style="max-width: 100%" alt="">
-                    </div>
-                    {{ link.url | video_iframe_by_url: width: 600, height: 400, id: video_id }}
-                  </a>
-                {% endif %}
-              </div>
-              {% if link.url contains "https://static.insales-cdn.com" %}
-                <div class="splide__slide product__slide-tumbs js-product-gallery-tumbs-slide play-video" data-product-img-id="{{ forloop.index0 }}">
-
-                  <div class="img-ratio img-ratio_contain product__photo-tumb">
-                    <div class="img-ratio__inner">
-                      <img src="https://static.insales-cdn.com/files/1/4301/24817869/original/play-button.png" style="max-width: 100%" alt="">
-                    </div>
-                  </div>
-                </div>
-              {% else %}
-                <div class="splide__slide product__slide-tumbs js-product-gallery-tumbs-slide play-video" data-product-img-id="{{ forloop.index0 }}">
-                  <div class="control play">
-                    <span class="center"></span>
-                  </div>
-                  <div class="img-ratio img-ratio_contain product__photo-tumb">
-                    <div class="img-ratio__inner">
-                      <img src="{{ link.url | video_preview_by_url }}" style="max-width: 100%" alt="">
-                    </div>
-                  </div>
-                </div>
-              {% endif %}
-            {% endfor %}
-          {% endcapture %}
-          {% if widget_settings.video-before-image and product.video_links.size > 0 %}
-            {{ videos }} {{ images }}
-          {% else %}
-            {{ images }} {{ videos }}
-          {% endif %}
-        </div>
-        <div class="product__gallery-main">
-          <div class="splide js-product-gallery-main">
-            <div class="splide__track">
-              <div class="splide__list"></div>
-            </div>
-            <div class="splide__arrows">
-              <button type="button" class="splide__arrow splide__arrow--prev">
-                <span class="splide__arrow-icon icon-angle-left"></span>
-              </button>
-              <button type="button" class="splide__arrow splide__arrow--next">
-                <span class="splide__arrow-icon icon-angle-right"></span>
-              </button>
-            </div>
-          </div>
-          <div class="product__available">
-            <span data-product-card-available='{
-              "availableText": "{{messages.available}}",
-              "notAvailableText": "{{messages.not_available}}"
-              }'></span>
-        </div>
-        </div>
-        <div class="product__gallery-tumbs" style="--img-ratio: 1;">
-          <div class="splide js-product-gallery-tumbs">
-            <div class="splide__track">
-              <div class="splide__list"></div>
-            </div>
-            <div class="splide__arrows">
-              <button type="button" class="splide__arrow splide__arrow--prev">
-                <span class="splide__arrow-icon icon-angle-left"></span>
-              </button>
-              <button type="button" class="splide__arrow splide__arrow--next">
-                <span class="splide__arrow-icon icon-angle-right"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    {% else %}
-      {% assign img_title = product.title | escape %}
-      {% if product.first_image.title.size > 0 %}
-        {% assign img_title = product.first_image.title | escape %}
-      {% endif %}
-
-      <div class="product__one-photo">
-        <a
-          class="img-ratio img-ratio_cover product__photo"
-          data-alt="{{ img_title }}"
-          data-fslightbox="product-photos-lightbox-{{ product.first_image.id }}"
-          data-type="image"
-          href="{{product.first_image.original_url}}">
-          <div class="img-ratio__inner">
-            <picture>
-              <source
-                srcset="{{ product.first_image.original_url | image_url: 1000, format: 'webp', resizing_type: 'fit_width', quality: 100 }}"
-                type="image/webp"
-                loading="lazy">
-              <img
-                src="{{ product.first_image.original_url | image_url: 1000, resizing_type: 'fit_width', quality: 100 }}"
-                loading="lazy"
-                alt="{{ img_title }}" />
-            </picture>
-            {% comment %}
-              {{ product.first_image.original_url | webp_picture_tag: 1000, alt: img_title, title: img_title }}
-            {% endcomment %}
-          </div>
-        </a>
-        <div class="product__available">
-          <span data-product-card-available='{
-                    "availableText": "{{messages.available}}",
-                    "notAvailableText": "{{messages.not_available}}"
-                    }'></span>
-        </div>
-      </div>
-    {% endif %}
-
-    {{ stickers }}
-  </div>
-  <form
-    action="{{ cart_url }}"
-    method="post"
-    class="product__area-form product-form">
-    <div class="product-form__area-rating">
-      {% if editor_mode? or widget_settings.product-hide-rating != true %}
-        <div
-          class="product__rating"
-          data-rating="{{product.rating}}"
-          data-trigger-click="reviews-open:insales:site">
-          <div class="product__rating-list">
-            {% assign r = 1 %}
-            {% for i in (1..5) %}
-              <span class="product__rating-star icon-star {% if r <= product.rating %}is-active{% endif%}"></span>
-              {% assign r = r | plus: 1 %}
-            {% endfor %}
-          </div>
-          <div class="product__reviews-count">({{ product.reviews_count }})</div>
-        </div>
-      {% endif %}
-    </div>
-    <div class="product-form__area-sku">
-      {% if editor_mode? or widget_settings.product-hide-sku != true %}
-        <div class="product__sku">
-          <span data-product-card-sku='{"skuLabel": "{{messages.sku_label}}"}'></span>
-        </div>
-      {% endif %}
-    </div>
-    <div class="product-form__area-title">
-      <h1 class="product__title heading">
-        {{ product.title | editable }}
-      </h1>
-    </div>
-    <div class="product-form__area-price">
-      <div class="product__price">
-        <span class="product__price-cur" data-product-card-price-from-cart></span>
-        <span class="product__price-old" data-product-card-old-price></span>
-        {% if product.bundle_discount > 0 %}
-          <div class="product__bundle-discount">
-            <span class="product__bundle-discount-label">{{ messages.product_bundle_discount_label }}:</span>
-            <span class="product__bundle-discount-value">{{ product.bundle_discount | money }}</span>
-          </div>
+  <div class="product-info">
+    <div class="product-sku">
+      Артикул: <span id="product-sku">
+        {% if product.variants.size > 0 %}
+          {{ product.variants.first.sku }}
         {% endif %}
-      </div>
+      </span>
     </div>
-    <div class="product-form__area-controls">
-      <div class="product__controls">
-        {% if sber_bnpl.payment_gateway_enabled? %}
-          {% if sber_bnpl.show_at_product == true %}
-            {% include "system_bnpl-button" with product, button_class: 'collection', button_type_show: 'collection-price-default', button_type_hide: 'collection-price-varies-hide' %}
-          {% endif %}
+    <div id="product-price">
+      <span>
+        {% if product.variants.size > 0 %}
+          {{ product.variants.first.price | money }}
         {% endif %}
-        <div class="product__controls-left">
-          <div class="product__buy-btn-area" id="product-detail-buy-area">
-            <div class="product__buy-btn-area-inner">
-              {% if product.show_service_button %}
-                {{ service_button }}
-              {% elsif product.show_cart_button %}
-                {{ cart_button }}
-                {{ preorder_button }}
-              {% elsif product.show_quick_checkout_button %}
-                {{ quick_checkout_product_button }}
-                {{ preorder_button }}
-              {% endif %}
-              {% if settings.favorite_enabled %}
-                <span class="button button_second button_size-xl favorites_btn in-area-buy" data-ui-favorites-trigger="{{ product.id }}">
-                  <span class="btn-icon icon-favorites"></span>
-                </span>
-              {% endif %}
-            </div>
-
-            <div class="product-form__area-not-available">
-              <span class="button button_size-xl button_wide product__not-available">{{ messages.not_available }}</span>
-              {% if settings.favorite_enabled %}
-                <span class="button button_second button_size-xl favorites_btn not-available-block" data-ui-favorites-trigger="{{ product.id }}">
-                  <span class="btn-icon icon-favorites"></span>
-                </span>
-              {% endif %}
-            </div>
-
-          </div>
-        </div>
-
-        <div class="product__controls-right">
-          {% if product.show_quick_checkout_button and product.show_cart_button %}
-            {{ quick_checkout_product_button }}
-          {% endif %}
-
-          {% if product.show_marketplace_button %}
-            {{ marketplace_button }}
-          {% endif %}
-          {% if is_show_marketplace_button or hide_all_buttons %}
-            {% if settings.favorite_enabled %}
-              <span class="button-link product__user-btn product__favorites-btn" data-ui-favorites-trigger="{{ product.id }}">
-                <span class="btn-icon icon-favorites-o"></span>
-                <span class="btn-icon icon-favorites-f"></span>
-                <span
-                  class="btn-text"
-                  data-ui-favorites-trigger-added-text="{{ messages.in_favorites }}"
-                  data-ui-favorites-trigger-not-added-text="{{ messages.to_favorites }}"></span>
-                </span>
-            {% endif %}
-          {% endif %}
-        </div>
-      </div>
+      </span>
     </div>
 
-    {% if product.show_variants? %}
-      {% capture product_variants_options %}{ "default": "option-radio"
-        {% if widget_settings.display-property-color == "text" %}, "default": "option-span"
-        {% endif %}
-        {% if widget_settings.display-property-color == "picture" %}, "default": "option-radio"
-        {% endif %}
-        }{% endcapture %}
-      <div class="product-form__area-variants-bundle">
-        <div class="product__variants">
-          <select
-            class="hide"
-            name="variant_id"
-            data-product-variants='{{ product_variants_options }}'>
-            {% for variant in product.variants %}
-              <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+    <form id="add-to-cart-form" action="/cart_items" method="post">
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      <input type="hidden" name="variant_id" id="variant_id" value="{{ product.variants.first.id }}">
+
+      {% for option in product.options %}
+        <div class="product-option-group" data-option-index="{{ forloop.index0 }}">
+          <div class="option-label">{{ option.title }}</div>
+          <div class="option-values">
+            {% for value in option.values %}
+              <button type="button" class="product-option-btn" data-value="{{ value.title | escape | strip }}" data-option-index="{{ forloop.parentloop.index0 }}">
+                {{ value.title }}
+              </button>
             {% endfor %}
-          </select>
-        </div>
-      </div>
-    {% else %}
-      <div class="product-form__area-variants-bundle">
-        <input
-          type="hidden"
-          name="variant_id"
-          value="{{ product.variants.first.id }}" />
-      </div>
-    {% endif %}
-
-    {% unless product.is_bundle %}
-      {% if product.accessories.size > 0 %}
-        <div class="product-form__area-accessories">
-          <div class="label-accessories">{{ messages.options }}</div>
-          <div data-product-accessories></div>
-        </div>
-
-        <template data-product-accessories-template>
-          <div
-            class="accessory-item"
-            data-product-accessories-item
-          >
-            <div data-product-accessory-count></div>
-
-
-            <div class="accessory-name">
-              <strong>
-                <span data-product-accessory-name></span>
-              </strong>
-
-              <span data-product-accessory-minmax-count='{
-                "minCountMessage": "{{ messages.from }}",
-                "maxCountMessage": "{{ messages.to }}"
-              }'></span>
-            </div>
-
-            <div class="accessory-values" data-product-accessory-values></div>
-
-            <div
-              data-product-accessory-error='{
-                "scrollEnabled": "true"
-              }'
-              class="accessory-item__error"
-            ></div>
-          </div>
-        </template>
-
-        <template data-product-accessory-values-template>
-          <label
-            class="accessory-values__item"
-            data-product-accessory-values-item
-            data-product-accessory-values-item-id
-          >
-            <span data-product-accessory-values-item-name></span> (+<span data-product-accessory-values-item-price></span>)
-          </label>
-        </template>
-      {% endif %}
-    {% endunless %}
-
-    {% if product.is_bundle %}
-      <div class="product__bundle">
-        <div class="bundle-list">
-          {% for bundle_component in product.bundle_components %}
-            <div class="bundle-item">
-              <div class="bundle-item__photo">
-                <div class="img-ratio img-ratio_cover product__photo">
-                  <div class="img-ratio__inner">
-                    <a href="{{bundle_component.product.url | add_param: 'variant_id', bundle_component.variant.id }}" target="_blank">
-                      {{ bundle_component.variant.first_image.original_url | webp_picture_tag: 400 }}
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="bundle-item__info">
-                <div class="bundle-item__name">
-                  <a href="{{bundle_component.product.url}}?variant_id={{bundle_component.variant.id}}" target="_blank">
-                    {{ bundle_component.product.title }}
-                  </a>
-                </div>
-                {% if bundle_component.variant.option_values.size > 0 %}
-                  <div class="bundle-item__property-list">
-                    {% for option_value in bundle_component.variant.option_values %}
-                      <span class="bundle-item__property-item">
-                        {{ option_value.option_name.title }}: {{ option_value.title }}
-                      </span>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                <div class="bundle-item__price">
-                  {% if bundle_component.is_free %}
-                    {{ bundle_component.quantity }} × {{ messages.product_bundle_gift_text }}
-                  {% else %}
-                    {{ bundle_component.quantity }} × {{ bundle_component.variant.price | money }}
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-      <input
-        type="hidden"
-        name="variant_id"
-        value="{{ product.variants.first.id }}" />
-    {% endif %}
-    <div class="product-form__area-short-description">
-      {% if editor_mode? or widget_settings.product-hide-short-description != true %}
-        <div class="product__short-description static-text">
-          {{ product.short_description | replace: '<table', '
-           <div class="table-wrapper"><table' | replace: '</table>', '</table></div>
-           ' | editable }}
-        </div>
-      {% endif %}
-    </div>
-  </form>
-  <div class="product__area-description">
-    {% if product.description %}
-      {% if editor_mode? or widget_settings.product-hide-full-description != true %}
-        <div class="product__full-description static-text toggle-menu">
-          <div class="product__block-title">{{ messages.description }}
-            <button class="menu-show-submenu-btn js-show-submenu" type="button">
-              <span class="icon icon-angle-down"></span>
-            </button>
-          </div>
-          <div class="cut-block js-cut-block hidden">
-            <div class="cut-block__content-wrapper">
-              <div class="cut-block__content">
-                <div class="product__description-content static-text">
-                  {{ product.description | replace: '<table', '
-                   <div class="table-wrapper"><table' | replace: '</table>', '</table></div>
-                   ' | editable }}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-      {% endif %}
-    {% endif %}
-  </div>
-  <div class="product__area-properties">
-    {% if product.properties.size > 0 %}
-      {% unless product.properties.size == 1 and product.properties.first.handle == 'label' %}
-        <div class="product__properties toggle-menu">
-          <div class="product__block-title">{{ messages.label_properties }}<button class="menu-show-submenu-btn js-show-submenu" type="button">
-              <span class="icon icon-angle-down"></span>
-            </button>
-          </div>
-          <div class="product__properties-content hidden">
-            <div class="grid-list product__properties-items">
-              {% for property in product.properties %}
-                {% unless property.handle == "label" %}
-                  <div class="product__property">
-                    <div class="product__property-name">{{ property.name }}</div>
-                    <div class="product__property-value">
-                      {% for characteristic in property.characteristics %}
-                        {{ characteristic.title }}{% unless forloop.last %},{% endunless %}
-                      {% endfor %}
-                    </div>
-                  </div>
-                {% endunless %}
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      {% endunless %}
-    {% endif %}
-    {% for field in product.fields %}
-      {% if field.value != '' %}
-        <div class="product__field toggle-menu">
-          <div class="product__block-title">{{ field.title }}
-            <button class="menu-show-submenu-btn js-show-submenu" type="button">
-              <span class="icon icon-angle-down"></span>
-            </button>
-          </div>
-          <div class="product__description-content hidden static-text">
-            {{ field.value | replace: '<table', '
-             <div class="table-wrapper"><table' | replace: '</table>', '</table></div>
-             ' }}
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-  <div class="product__area-reviews">
-    <div class="product__reviews" style="--img-ratio:1">
-      {% if account.reviews_enabled? %}
-        {% assign reviews_limit = 100 %}
-        <div class="reviews toggle-menu">
-          <div class="product__block-title">
-            <div>
-              {{ messages.reviews }}
-              {% if product.reviews_count > 0 %}
-                <span class="product__block-title-value">({{ product.reviews_count }})</span>
-              {% endif %}
-            </div>
-            <button class="menu-show-submenu-btn js-show-submenu" type="button">
-              <span class="icon icon-angle-down"></span>
-            </button>
-          </div>
-          <div class="reviews-list hidden">
-            {% for review in product.reviews limit: reviews_limit %}
-              <div class="reviews-item {% if forloop.index > 3 %}is-hide{% endif %}">
-                <div class="reviews-item__content">
-                  <div class="reviews-item__header">
-                    <div class="reviews-item__author">{{ review.author }}</div>
-                    {% if review.rating %}
-                      <div class="reviews-item__rating">
-                        <div class="product__rating-list">
-                          {% assign r = 1 %}
-                          {% for i in (1..5) %}
-                            <span class="product__rating-star icon-star {% if r <= review.rating %}is-active{% endif%}"></span>
-                            {% assign r = r | plus: 1 %}
-                          {% endfor %}
-                        </div>
-                      </div>
-                    {% endif %}
-                  </div>
-                  <div class="reviews-item__content">{{ review.content }}</div>
-                  {% if review.image.medium_url.size > 0 %}
-                    <div class="reviews-item__photo">
-                      <a
-                        class="img-ratio img-ratio_cover"
-                        data-fslightbox="review-photos-lightbox-{{ forloop.index }}"
-                        data-type="image"
-                        href="{{ review.image.original_url }}">
-                        <div class="img-ratio__inner">
-                          {{ review.image.medium_url | webp_picture_tag: 80 }}
-                        </div>
-                      </a>
-                    </div>
-                  {% endif %}
-                  <div class="reviews-item__footer">
-                    <div class="reviews-item__date">{{ review.created_at | date: "%d.%m.%Y %H:%M" }}</div>
-                    {% if review.replied? %}
-                      <div class="reviews-item__replied-controls">
-                        <span class="button-link reviews-item__replied-control _show js-show-replied-manager">{{ messages.review_show_comment }}</span>
-                        <span class="button-link reviews-item__replied-control _hide js-hide-replied-manager">{{ messages.review_hide_comment }}</span>
-                      </div>
-                    {% endif %}
-                  </div>
-                  {% if review.replied? %}
-                    <div class="reviews-item__replied {% if widget_settings.manager-photo == null %}is-no-manager-photo{% endif%}">
-                      {% if widget_settings.manager-photo != null %}
-                        <div class="reviews-item__replied-photo">
-                          <div class="img-ratio img-ratio_cover">
-                            <div class="img-ratio__inner">
-                              {{ widget_settings.manager-photo | webp_picture_tag: 80 }}
-                            </div>
-                          </div>
-                        </div>
-                      {% endif %}
-                      <div class="reviews-item__replied-name">{{ messages.review_manager_name }}</div>
-                      <div class="reviews-item__replied-text">
-                        {{ review.manager_reply }}
-                      </div>
-                    </div>
-                  {% endif %}
-                </div>
-              </div>
-            {% endfor %}
-            {% if product.reviews_count < 1 %}
-              <div class="reviews__empty-message">{{ messages.review_none }}</div>
-            {% endif %}
-          </div>
-          {% if product.reviews_count > 3 %}
-            <div class="reviews__show-controls hidden">
-              <span class="button-link reviews__show-all-btn js-show-all-reviews">{{ messages.review_show_more }}</span>
-            </div>
-          {% endif %}
-          <span class="button-link show-review-form-btn js-show-review-form hidden {% if review.errors.size > 0 %}is-hide{% endif %}">
-            <span class="show-review-form-btn__show-text">{{ messages.review_write_new }}</span>
-            <span class="show-review-form-btn__hide-text">{{ messages.cancel }}</span>
-          </span>
-          <div class="review-form-wrapper hidden">
-            <form data-reviews-form-wrapper='{"reviews_moderated": {{ account.reviews_moderated? }} , "url": "{{ product.url }}" }' class="review-form" method="post" action="{{ product.url }}/reviews#review_form" enctype="multipart/form-data">
-              {% assign success_message = messages.review_is_added %}
-              {% if account.reviews_moderated? %}
-                {% assign success_message = messages.review_is_added_moderated %}
-              {% endif %}
+      {% endfor %}
 
-              <div data-reviews-form-success='{"showTime": 10000, "message": "{{ success_message }}", "reloadPage": false }' class="notice-success"></div>
-
-              <div id="review_form" class="reviews-wrapper {% unless review.errors.size > 0 %}is-hide{% endunless%}">
-                <div class="reviews-form">
-                  <div class="reviews-form__header">
-                    <div class="reviews-form__title">{{ messages.give_feedback }}</div>
-                  </div>
-                  <div class="reviews-form__content">
-                    <div class="form-field reviews-form__rating">
-                      <label class="form-field__label">{{ messages.field_rating }}
-                        <span class="text-error">*</span>
-                      </label>
-                      <div data-reviews-form-field-area class="star-rating-wrapper">
-                        <div class="star-rating">
-                          {% assign r = 5 %}
-                          {% for i in (1..5) %}
-                            <input
-                              data-reviews-form-field
-                              name="review[rating]"
-                              id="star{{ r }}-{{ product.id }}-{{ widgetDrop.id }}"
-                              type="radio"
-                              class="star-radio"
-                              value="{{ r }}" />
-                            <label
-                              title="{{ r }}"
-                              for="star{{ r }}-{{ product.id }}-{{ widgetDrop.id }}"
-                              class="star-label icon icon-star"></label>
-                            {% assign r = r | minus: 1 %}
-                          {% endfor %}
-                        </div>
-                        <div data-reviews-form-field-error class="form__field-error"></div>
-                      </div>
-                    </div>
-                    <div class="grid-list grid-list_wide">
-                      <div data-reviews-form-field-area class="form-field is-required {% if review.errors contains 'author' %}is-error{% endif %}">
-                        <label class="form-field__label">{{ messages.name }}
-                          <span class="text-error">*</span>
-                        </label>
-                        <input
-                          data-reviews-form-field='{"isRequired": true, "errorMessage": "{{ messages.name_error | escape }}"}'
-                          name="review[author]"
-                          placeholder="{{ messages.name }}"
-                          value="{{ review.author }}"
-                          type="text"
-                          class="form-control form-control_size-m" />
-                        <div data-reviews-form-field-error class="form__field-error"></div>
-                      </div>
-                      <div data-reviews-form-field-area class="form-field is-required {% if review.errors contains 'email' %}is-error{% endif %}">
-                        <label class="form-field__label">{{ messages.field_email }}
-                          <span class="text-error">*</span>
-                        </label>
-                        <input
-                          data-reviews-form-field='{"isRequired": true, "errorMessage": "{{ messages.email_error | escape}}"}'
-                          name="review[email]"
-                          placeholder="{{ messages.field_email }}"
-                          value="{{ review.email }}"
-                          type="text"
-                          class="form-control form-control_size-m"
-                        />
-                        <div data-reviews-form-field-error class="form__field-error"></div>
-                      </div>
-                    </div>
-                    <div data-reviews-form-field-area class="form-field form-comment is-required {% if review.errors contains 'content' %}is-error{% endif %}">
-                      <label class="form-field__label">{{ messages.review }}
-                        <span class="text-error">*</span>
-                      </label>
-                      <textarea
-                        data-reviews-form-field='{"isRequired": true, "errorMessage": "{{ messages.please_enter_message | escape }}"}'
-                        name="review[content]"
-                        placeholder="{{ messages.review }}"
-                        class="form-control form-control_size-m is-textarea"
-                      >{{ review.content }}</textarea>
-                      <div data-reviews-form-field-error class="form__field-error"></div>
-                    </div>
-                    {% if account.reviews_images_enabled? %}
-                      <div data-reviews-form-field-area class="form-row form-field form-file is-required {% if review.errors contains 'image.image' %} input--error{% endif %}">
-                        <label class="form-label icon icon-camera">
-                          <span class="load-review-image-name">{{ messages.add_photo }}</span>
-                          <input
-                            data-reviews-form-image
-                            type="file"
-                            class="js-load-review-image hidden"
-                            name="review[image_attributes][image]"
-                          />
-                        </label>
-                        <div data-reviews-form-field-error class="form__field-error"></div>
-                      </div>
-                    {% endif %}
-
-                    {% if review.captcha_enabled? %}
-                      {% if account.captcha_type == 'google' %}
-                      <div data-reviews-form-field-area class="form-row form-field form-captcha {% if review.errors contains 'captcha_solution' %}is-error{% endif %}">
-                        <div
-                          data-recaptcha-type="invisible"
-                          data-reviews-form-recaptcha='{"isRequired": true, "errorMessage": "{{ messages.recaptcha_error | escape }}"}'
-                          id="captcha_challenge"
-                          class="captcha-recaptcha"
-                        ></div>
-                        <div data-reviews-form-field-error class="form__field-error"></div>
-                      </div>
-                      {% elsif account.captcha_type == 'yandex' %}
-                      <div data-reviews-form-field-area class="form-row form-field form-captcha {% if review.errors contains 'captcha_solution' %}is-error{% endif %}">
-                        <div
-                          data-yandex-captcha-type="invisible"
-                          data-reviews-form-yandex-captcha='{"isRequired": true, "errorMessage": "{{ messages.recaptcha_error | escape }}"}'
-                          id="captcha_challenge"
-                          class="captcha-recaptcha"
-                        ></div>
-                        <div data-reviews-form-field-error class="form__field-error"></div>
-                      </div>
-                      {% endif %}
-                    {% endif %}
-
-                    <div class="form-field form-field_conctrols">
-                      <button type="submit" class="button button_wide">{{ messages.give_feedback }}</button>
-                    </div>
-                  </div>
-                  {% if account.reviews_moderated? %}
-                    <div class="reviews-form__moderation-info">
-                      {{ messages.reviews_are_moderated }}
-                    </div>
-                  {% endif %}
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      {% endif %}
-    </div>
-  </div>
-  <div class="product__area-calculate-delivery">
-    <div class="product__calculate-delivery">
-      {% include "system_insales_widget-calculate_delivery" %}
-    </div>
+      <button type="submit" id="buy-btn" class="btn btn-primary">Купить</button>
+    </form>
   </div>
 </div>
-{% assign img_title = null %}
+
+<script>
+  // Формируем массив вариантов с option_values
+  var variants = [
+    {% for variant in product.variants %}
+      {
+        id: {{ variant.id }},
+        options: [{% for v in variant.option_values %}"{{ v.title | escape | strip }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
+        price: "{{ variant.price | money }}",
+        sku: "{{ variant.sku | escape }}",
+        available: {{ variant.available | json }}
+      }{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  ];
+
+  var selectedOptions = [];
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация: выбираем опции первого доступного варианта
+    var firstVariant = variants.find(function(v) { return v.available; }) || variants[0];
+    if (firstVariant) {
+      selectedOptions = firstVariant.options.slice();
+      // Сброс выделения у всех кнопок
+      document.querySelectorAll('.product-option-btn').forEach(function(btn) {
+        btn.classList.remove('selected');
+      });
+      // Подсветка только тех, что соответствуют выбранным опциям
+      document.querySelectorAll('.product-option-group').forEach(function(group, idx) {
+        var btns = group.querySelectorAll('.product-option-btn');
+        btns.forEach(function(btn) {
+          if (btn.getAttribute('data-value').trim() === selectedOptions[idx]) {
+            btn.classList.add('selected');
+          }
+        });
+      });
+    }
+
+    updateOptionsAndVariant();
+
+    // Обработчик клика по кнопке опции
+    document.querySelectorAll('.product-option-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (btn.disabled) return;
+        var optionIdx = parseInt(btn.getAttribute('data-option-index'));
+        // Снимаем выделение со всех кнопок этой группы
+        btn.parentElement.querySelectorAll('.product-option-btn').forEach(function(b) {
+          b.classList.remove('selected');
+        });
+        // Выделяем выбранную
+        btn.classList.add('selected');
+        selectedOptions[optionIdx] = btn.getAttribute('data-value').trim();
+        updateOptionsAndVariant();
+      });
+    });
+  });
+
+  function updateOptionsAndVariant() {
+    // Находим выбранный вариант
+    var selectedVariant = variants.find(function(variant) {
+      return JSON.stringify(variant.options) === JSON.stringify(selectedOptions);
+    });
+
+    // Обновляем цену, артикул, variant_id, кнопку
+    if (selectedVariant) {
+      document.getElementById('variant_id').value = selectedVariant.id;
+      document.getElementById('product-price').innerHTML = '<span>' + selectedVariant.price + '</span>';
+      document.getElementById('product-sku').textContent = selectedVariant.sku;
+      document.getElementById('buy-btn').disabled = !selectedVariant.available;
+      document.getElementById('buy-btn').textContent = selectedVariant.available ? 'Купить' : 'Нет в наличии';
+    } else {
+      document.getElementById('variant_id').value = '';
+      document.getElementById('product-price').innerHTML = '<span>—</span>';
+      document.getElementById('product-sku').textContent = '';
+      document.getElementById('buy-btn').disabled = true;
+      document.getElementById('buy-btn').textContent = 'Нет в наличии';
+    }
+  }
+</script>
+
+<style>
+.product-option-btn.selected {
+  background: #007bff;
+  color: #fff;
+}
+.product-option-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.product-gallery {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1em;
+}
+.product-image {
+  max-width: 120px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+.product-sku {
+  margin-bottom: 0.5em;
+  color: #888;
+}
+</style>
