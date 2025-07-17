@@ -1,8 +1,8 @@
-<main class="le-product">
+<div class="le-product">
   <div class="le-product-header-mobile">
     <div class="le-product-header-mobile-info">
-      <div class="le-product-header-mobile-info__sku" id="product-sku-block" style="display: none;">
-        SKU: <span id="product-sku"></span>
+      <div class="le-product-header-mobile-info__sku" id="product-sku-block-mobile" style="display: none;">
+        SKU: <span id="product-sku-mobile"></span>
       </div>
       <div class="le-product-header-mobile-info__title">
         <span>{{ product.title }}</span>
@@ -10,7 +10,7 @@
           <path d="M19.2839 11.2778C20.2478 9.75021 21.3108 7.66801 20.9629 5.10053C20.731 3.39466 19.8613 1.9339 18.5133 0.99059C17.2232 0.0868974 15.6336 -0.217635 14.1527 0.156222C12.3722 0.604354 11.1449 2.07007 10.5893 3.29067L10.5144 3.45408L10.4395 3.29067C9.88388 2.07007 8.65664 0.60683 6.87616 0.156222C6.46305 0.0522351 6.04028 0.000242007 5.61751 0.000242007C4.53038 0.000242007 3.44567 0.339436 2.51558 0.99059C1.16754 1.9339 0.297834 3.39466 0.0683293 5.10053C-0.281967 7.66553 0.781002 9.75021 1.74492 11.2778C3.65827 14.3132 7.03077 16.7693 9.33548 17.9478C10.0602 18.3192 10.9734 18.3192 11.6909 17.9478C13.9956 16.7693 17.3682 14.3132 19.2839 11.2778ZM11.5049 17.5542C11.1957 17.7126 10.855 17.7918 10.5144 17.7918C10.1738 17.7918 9.83556 17.7126 9.52392 17.5542C7.26511 16.4004 3.96749 13.9988 2.10005 11.0377C1.1772 9.57443 0.157711 7.58383 0.486265 5.16243C0.701274 3.58035 1.50575 2.22852 2.75232 1.35454C3.60753 0.755382 4.59561 0.440947 5.61268 0.440947C6.00404 0.440947 6.393 0.487988 6.77228 0.584547C8.75327 1.08467 10.0506 3.04309 10.3042 4.20922C10.326 4.30825 10.4129 4.38005 10.512 4.38005C10.611 4.38005 10.698 4.30825 10.7198 4.20922C10.9734 3.04309 12.2707 1.08467 14.2517 0.584547C15.6167 0.240401 17.0831 0.520174 18.2717 1.35454C19.5183 2.22605 20.3227 3.57787 20.5377 5.16243C20.8663 7.58383 19.8492 9.57443 18.924 11.0377C17.0565 13.9988 13.7565 16.3979 11.5001 17.5542H11.5049Z" fill="black"/>
         </svg>
       </div>
-      <div class="le-product-header-mobile-info__price" id="product-price">
+      <div class="le-product-header-mobile-info__price" id="product-price-mobile">
         {% if product.variants.size > 0 %}
           {{ product.variants.first.price | money }}
         {% endif %}
@@ -35,8 +35,8 @@
       </div>
       <div class="le-product-col2">
         <div class="le-product-header">
-          <div class="le-product-header__sku" id="product-sku-block" style="display: none;">
-            SKU: <span id="product-sku"></span>
+          <div class="le-product-header__sku" id="product-sku-block-desktop" style="display: none;">
+            SKU: <span id="product-sku-desktop"></span>
           </div>
           <div class="le-product-header__title">
             <span>{{ product.title }}</span>
@@ -44,54 +44,12 @@
               <path d="M49.0739 28.4492C51.5005 24.6037 54.1763 19.362 53.3006 12.8987C52.7168 8.60443 50.5274 4.92716 47.1339 2.55251C43.8864 0.27759 39.8847 -0.489028 36.1567 0.452104C31.6746 1.58022 28.5852 5.26995 27.1864 8.34266L26.9979 8.75401L26.8094 8.34266C25.4106 5.26995 22.3212 1.58645 17.8391 0.452104C16.7992 0.190333 15.7349 0.0594471 14.6706 0.0594471C11.9339 0.0594471 9.20331 0.913322 6.86191 2.55251C3.46841 4.92716 1.27905 8.60443 0.701306 12.8987C-0.180518 19.3558 2.49536 24.6037 4.9219 28.4492C9.73848 36.0905 18.2283 42.2733 24.0301 45.24C25.8546 46.1749 28.1534 46.1749 29.9596 45.24C35.7614 42.2733 44.2513 36.0905 49.0739 28.4492ZM29.4913 44.249C28.7129 44.6479 27.8554 44.8474 26.9979 44.8474C26.1404 44.8474 25.289 44.6479 24.5045 44.249C18.8182 41.3446 10.5169 35.2989 5.81589 27.8447C3.49274 24.1612 0.926312 19.1501 1.7534 13.0545C2.29466 9.07188 4.31982 5.66884 7.45789 3.46871C9.61076 1.96041 12.0981 1.16886 14.6584 1.16886C15.6437 1.16886 16.6228 1.28728 17.5776 1.53036C22.5645 2.78935 25.8302 7.71939 26.4688 10.655C26.5235 10.9043 26.7425 11.085 26.9918 11.085C27.2412 11.085 27.4601 10.9043 27.5148 10.655C28.1534 7.71939 31.4192 2.78935 36.406 1.53036C39.8421 0.664016 43.5336 1.36831 46.5257 3.46871C49.6638 5.66261 51.689 9.06564 52.2302 13.0545C53.0573 19.1501 50.497 24.1612 48.1678 27.8447C43.4667 35.2989 35.1593 41.3384 29.4792 44.249H29.4913Z" fill="black"/>
             </svg>
           </div>
-          <div class="le-product-header__price" id="product-price">
+          <div class="le-product-header__price" id="product-price-desktop">
             {% if product.variants.size > 0 %}
               {{ product.variants.first.price | money }}
             {% endif %}
           </div>
         </div>
-        {% comment %}<form class="le-product-form">{% endcomment %}
-          {% comment %}<div class="le-product-form-item">{% endcomment %}
-            {% comment %}<div class="le-product-form-item__title">{% endcomment %}
-              {% comment %}РАЗМЕР{% endcomment %}
-              {% comment %}<a href="/">подобрать размер</a>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-            {% comment %}<div class="le-product-form-item-controls">{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button le-product-form-item-controls__button_active">15</div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">16</div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">16.5 (предзаказ)</div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">17</div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">17.5</div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">18</div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">18.5</div>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-          {% comment %}</div>{% endcomment %}
-          {% comment %}<div class="le-product-form-item">{% endcomment %}
-            {% comment %}<div class="le-product-form-item__title">{% endcomment %}
-              {% comment %}цвет{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-            {% comment %}<div class="le-product-form-item-controls">{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button le-product-form-item-controls__button_active">red <span class="le-product-form-item-controls__button_color red"></span></div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">blue <span class="le-product-form-item-controls__button_color blue"></span></div>{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">green <span class="le-product-form-item-controls__button_color green"></span></div>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-          {% comment %}</div>{% endcomment %}
-          {% comment %}<div class="le-product-form-item">{% endcomment %}
-            {% comment %}<div class="le-product-form-item__title">{% endcomment %}
-              {% comment %}ГРАВИРОВКА{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-            {% comment %}<div class="le-product-form-item-controls">{% endcomment %}
-              {% comment %}<div class="le-product-form-item-controls__button">+ 1500 ₽</div>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-          {% comment %}</div>{% endcomment %}
-          {% comment %}<div class="le-product-form-item">{% endcomment %}
-            {% comment %}<div class="le-product-form-item__title">{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-            {% comment %}<div class="le-product-form-item-controls">{% endcomment %}
-              {% comment %}<button type="submit" class="le-product-form__submit">Добавить в корзину</button>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-          {% comment %}</div>{% endcomment %}
-        {% comment %}</form>{% endcomment %}
         <form id="add-to-cart-form" action="/cart_items" method="post" class="le-product-form">
           <input type="hidden" name="product_id" value="{{ product.id }}">
           <input type="hidden" name="variant_id" id="variant_id" value="{{ product.variants.first.id }}">
@@ -104,14 +62,15 @@
               <div class="le-product-form-item-controls">
                 {% for value in option.values %}
                   <button type="button" class="le-product-form-item-controls__button product-option-btn" data-value="{{ value.title | escape | strip }}" data-option-index="{{ forloop.parentloop.index0 }}">
-                    {{ value.title }}
+                    {{ value.title }}{% if option.title == 'Цвет' %} <span class="le-product-form-item-controls__button_color {{ value.title }}"></span>{% endif %}
                   </button>
                 {% endfor %}
               </div>
             </div>
           {% endfor %}
-
-          <button type="submit" id="buy-btn" class="btn btn-primary">Купить</button>
+          <div class="le-product-form-item">
+            <button type="submit" id="buy-btn" class="le-product-form__submit">Добавить в корзину</button>
+          </div>
         </form>
         <div class="le-product-accordion">
           <div class="le-product-accordion__item">
@@ -144,51 +103,6 @@
         </div>
       </div>
     </div>
-  </div>
-</main>
-
-<div class="product-page">
-  <h1 class="product-title">{{ product.title }}</h1>
-
-  {% if product.images.size > 0 %}
-    <div class="product-gallery">
-      {% for image in product.images %}
-        <img src="{{ image.medium_url }}" alt="{{ product.title }}" class="product-image" />
-      {% endfor %}
-    </div>
-  {% endif %}
-
-  <div class="product-info">
-    <div class="product-sku" id="product-sku-block" style="display: none;">
-      Артикул: <span id="product-sku"></span>
-    </div>
-    <div id="product-price">
-      <span>
-        {% if product.variants.size > 0 %}
-          {{ product.variants.first.price | money }}
-        {% endif %}
-      </span>
-    </div>
-
-    <form id="add-to-cart-form" action="/cart_items" method="post">
-      <input type="hidden" name="product_id" value="{{ product.id }}">
-      <input type="hidden" name="variant_id" id="variant_id" value="{{ product.variants.first.id }}">
-
-      {% for option in product.options %}
-        <div class="product-option-group" data-option-index="{{ forloop.index0 }}">
-          <div class="option-label">{{ option.title }}</div>
-          <div class="option-values">
-            {% for value in option.values %}
-              <button type="button" class="product-option-btn" data-value="{{ value.title | escape | strip }}" data-option-index="{{ forloop.parentloop.index0 }}">
-                {{ value.title }}
-              </button>
-            {% endfor %}
-          </div>
-        </div>
-      {% endfor %}
-
-      <button type="submit" id="buy-btn" class="btn btn-primary">Купить</button>
-    </form>
   </div>
 </div>
 
@@ -253,53 +167,94 @@
       return JSON.stringify(variant.options) === JSON.stringify(selectedOptions);
     });
 
-    // Обновляем цену, артикул, variant_id, кнопку
+    // Обновляем цену, variant_id, кнопку
+    var priceHtml = selectedVariant ? '<span>' + selectedVariant.price + '</span>' : '<span>—</span>';
+    var priceMobile = document.getElementById('product-price-mobile');
+    var priceDesktop = document.getElementById('product-price-desktop');
+    if (priceMobile) priceMobile.innerHTML = priceHtml;
+    if (priceDesktop) priceDesktop.innerHTML = priceHtml;
+
+    // Обновляем артикул в мобильном и десктопном блоках
+    var skuBlocks = [
+      {block: document.getElementById('product-sku-block-mobile'), span: document.getElementById('product-sku-mobile')},
+      {block: document.getElementById('product-sku-block-desktop'), span: document.getElementById('product-sku-desktop')}
+    ];
     if (selectedVariant) {
       document.getElementById('variant_id').value = selectedVariant.id;
-      document.getElementById('product-price').innerHTML = '<span>' + selectedVariant.price + '</span>';
       document.getElementById('buy-btn').disabled = !selectedVariant.available;
       document.getElementById('buy-btn').textContent = selectedVariant.available ? 'Купить' : 'Нет в наличии';
-      // Показ/скрытие блока с артикулом
-      var skuBlock = document.getElementById('product-sku-block');
-      if (selectedVariant.sku && selectedVariant.sku.trim() !== "") {
-        document.getElementById('product-sku').textContent = selectedVariant.sku;
-        skuBlock.style.display = '';
-      } else {
-        document.getElementById('product-sku').textContent = '';
-        skuBlock.style.display = 'none';
-      }
+      skuBlocks.forEach(function(sku) {
+        if (sku.block && sku.span) {
+          if (selectedVariant.sku && selectedVariant.sku.trim() !== "") {
+            sku.span.textContent = selectedVariant.sku;
+            sku.block.style.display = '';
+          } else {
+            sku.span.textContent = '';
+            sku.block.style.display = 'none';
+          }
+        }
+      });
     } else {
       document.getElementById('variant_id').value = '';
-      document.getElementById('product-price').innerHTML = '<span>—</span>';
       document.getElementById('buy-btn').disabled = true;
       document.getElementById('buy-btn').textContent = 'Нет в наличии';
-      document.getElementById('product-sku').textContent = '';
-      document.getElementById('product-sku-block').style.display = 'none';
+      skuBlocks.forEach(function(sku) {
+        if (sku.block && sku.span) {
+          sku.span.textContent = '';
+          sku.block.style.display = 'none';
+        }
+      });
     }
   }
+
+// Аккордеон для блока le-product-accordion__item
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.le-product-accordion__item-header').forEach(function(header) {
+      header.addEventListener('click', function() {
+        var item = header.closest('.le-product-accordion__item');
+        var content = item.querySelector('.le-product-accordion__item-content');
+        var svg = header.querySelector('svg');
+        var isOpen = item.classList.contains('open');
+        // Закрыть все, если нужно аккордеон с одним открытым
+        // document.querySelectorAll('.le-product-accordion__item').forEach(function(i) {
+        //   if (i !== item) {
+        //     i.classList.remove('open');
+        //     i.querySelector('.le-product-accordion__item-content').style.maxHeight = null;
+        //     i.querySelector('svg').style.transform = '';
+        //   }
+        // });
+        if (!isOpen) {
+          item.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          if (svg) svg.style.transform = 'rotate(180deg)';
+        } else {
+          item.classList.remove('open');
+          content.style.maxHeight = null;
+          if (svg) svg.style.transform = '';
+        }
+      });
+    });
+    // Изначально все скрыты
+    document.querySelectorAll('.le-product-accordion__item-content').forEach(function(content) {
+      content.style.maxHeight = null;
+    });
+  });
 </script>
 
 <style>
-.product-option-btn.selected {
-  background: #007bff;
-  color: #fff;
-}
-.product-option-btn:disabled {
+.le-product-form__submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.product-gallery {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 1em;
+.le-product-accordion__item-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1);
 }
-.product-image {
-  max-width: 120px;
-  border: 1px solid #eee;
-  border-radius: 4px;
+.le-product-accordion__item.open .le-product-accordion__item-content {
+  /* max-height выставляется через JS */
 }
-.product-sku {
-  margin-bottom: 0.5em;
-  color: #888;
+.le-product-accordion__item-header svg {
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 </style>
