@@ -1,0 +1,122 @@
+.le-header {
+  margin-top: 10px;
+  //border-bottom: 1px solid rgba(0, 0, 0, 0.40);
+
+  @media ($M) {
+    margin-top: 20px;
+    border-bottom: 0;
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    margin-top: 30px;
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media ($M) {
+
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-header-cross {
+  width: 34px;
+  height: 34px;
+
+  @media ($XL) {
+    width: 61px;
+    height: 61px;
+  }
+}
+
+.le-header-logo {
+  height: 35px;
+  width: auto;
+
+  @media ($XL) {
+    height: 89px;
+  }
+}
+
+.le-header-cart {
+  position: relative;
+  margin-top: 3px;
+
+  @media ($XL) {
+    display: none;
+  }
+}
+
+.le-header-cart-count {
+  position: absolute;
+  top: 17px;
+  right: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 9px;
+}
+
+.le-header-nav {
+  display: none;
+
+  @media ($XL) {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+.le-header-nav-item {
+  color: #000;
+  font-family: "Helvetica Neue";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 12px */
+  letter-spacing: -0.24px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.le-header-justifyer1 {
+  @media ($XL) {
+    display: flex;
+    width: 360px;
+  }
+}
+
+.le-header-justifyer2 {
+  display: none;
+  @media ($XL) {
+    display: flex;
+    justify-content: flex-end;
+    width: 360px;
+  }
+}

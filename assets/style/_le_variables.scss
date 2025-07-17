@@ -1,0 +1,21 @@
+// media queries
+
+$XS: "min-width: 360px";
+$S: "min-width: 480px";
+$M: "min-width: 720px";
+$L: "min-width: 960px";
+
+$XL: "min-width: 1200px";
+$XXL: "min-width: 1440px";
+$XXXL: "min-width: 1920px";
+
+$mobile_only: "(min-width: 320px) and (max-width: 719px)";
+$desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
+
+// colors
+
+//$pan_dark_green: #255151;
+//$pan_light_grey: #ECECEA;
+//$pan_grey: #C0CCCD;
+//$pan_green: #42767A;
+//$pan_black: #101111;

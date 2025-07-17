@@ -1,0 +1,185 @@
+.le-success {
+  padding-top: 60px;
+  padding-bottom: 50px;
+
+  @media ($M) {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  @media ($L) {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  @media ($XL) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @media ($XXL) {
+    padding-top: 100px;
+  }
+}
+
+.le-success-breadcrumbs {
+  margin-bottom: 40px;
+
+  @media ($M) {
+    margin-bottom: 46px;
+  }
+
+  @media ($L) {
+    margin-bottom: 46px;
+  }
+
+  @media ($XL) {
+    margin-bottom: 52px;
+  }
+
+  @media ($XXL) {
+    margin-bottom: 70px;
+  }
+}
+
+.le-success-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media ($M) {
+    width: 569px;
+    margin:  auto;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: unset;
+  }
+
+  @media ($L) {
+    width: 675px;
+  }
+
+  @media ($XL) {
+    width: 921px;
+  }
+
+  @media ($XXL) {
+    width: 1027px;
+  }
+}
+
+.le-success-col {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 236px;
+
+  @media ($M) {
+    max-width: 213px;
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    max-width: 277px;
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-success__title {
+  color: var(--Black, #000);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 25px */
+  text-transform: uppercase;
+  max-width: 226px;
+
+  @media ($M) {
+    max-width: 131px;
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    font-size: 62px;
+    line-height: 100%; /* 62px */
+    max-width: 350px;
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-success_back {
+  display: flex;
+  height: 30px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+
+  color: #FFF;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+
+  @media ($M) {
+    padding: 0 30px;
+    font-size: 12px;
+    letter-spacing: -0.24px;
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-success-pic {
+  width: 306.761px;
+  height: 250.027px;
+
+  @media ($M) {
+
+  }
+
+  @media ($L) {
+    width: 360.896px;
+    height: 294.149px;
+  }
+
+  @media ($XL) {
+    width: 433.075px;
+    height: 352.979px;
+  }
+
+  @media ($XXL) {
+    width: 465px;
+    height: 379px;
+  }
+}

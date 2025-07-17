@@ -1,0 +1,409 @@
+.le-shop {
+  padding-top: 60px;
+  min-height: 100vh; //temp
+
+  @media ($M) {
+    padding-top: 60px;
+  }
+
+  @media ($L) {
+    padding-top: 60px;
+  }
+
+  @media ($XL) {
+    padding-top: 120px;
+  }
+
+  @media ($XXL) {
+    padding-top: 120px;
+  }
+}
+
+.le-shop-controls {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 24px;
+
+  @media ($M) {
+    margin-bottom: 54px;
+  }
+
+  @media ($L) {
+    width: 880px;
+    margin-bottom: 45x;
+  }
+
+  @media ($XL) {
+    width: 1120px;
+  }
+
+  @media ($XXL) {
+    width: 1360px;
+  }
+}
+
+.le-shop-controls-top-row {
+  display: flex;
+  justify-content: space-between;
+  padding:  0 20px 20px 20px;
+
+  @media ($M) {
+    padding:  0 40px 20px 40px;
+  }
+
+  @media ($L) {
+    border-top: 1px solid rgba(0, 0, 0, 0.40);
+    padding:  8px 170px 8px 170px;
+  }
+
+  @media ($XL) {
+    padding:  15px 200px 15px 200px;
+  }
+
+  @media ($XXL) {
+    padding:  15px 260px 15px 260px;
+  }
+}
+
+.le-shop-controls-top-row__item {
+  color: rgba(0, 0, 0, 0.40);
+  text-align: right;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16.806px; /* 112.042% */
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+
+  @media ($M) {
+
+  }
+
+  @media ($L) {
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: normal;
+  }
+
+  @media ($XL) {
+    font-size: 25px;
+    line-height: 100%; /* 25px */
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-shop-controls-top-row__item_active {
+  color: var(--Black, #000);
+}
+
+.le-shop-controls-middle-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.40);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.40);
+
+  display: flex;
+  gap: 50px;
+  overflow-x: scroll;
+
+  padding:  10px 20px 10px 20px;
+
+  @media ($M) {
+    gap: unset;
+    justify-content: space-between;
+    padding:  12px 40px 12px 40px;
+  }
+
+  @media ($L) {
+    padding:  10px 40px 10px 40px;
+  }
+
+  @media ($XL) {
+    padding:  10px 70px 10px 70px;
+  }
+
+  @media ($XXL) {
+    padding:  10px 70px 10px 70px;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.le-shop-controls-middle-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.le-shop-controls-middle-row {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.le-shop-controls-middle-row__item {
+  color: var(--Black-transparent, rgba(0, 0, 0, 0.40));
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16.806px; /* 140.052% */
+  letter-spacing: -0.24px;
+  text-transform: uppercase;
+
+  @media ($M) {
+
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    font-family: "Helvetica Neue";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 16px */
+    letter-spacing: -0.32px;
+    text-transform: uppercase;
+  }
+}
+
+.le-shop-controls-middle-row__item_active {
+  color: var(--Black, #000);
+}
+
+.le-shop-controls-bottom-row {
+  display: none;
+
+  @media ($M) {
+    display: flex;
+    gap: 70px;
+    padding:  13px 40px 0 40px;
+  }
+
+  @media ($L) {
+    padding:  15px 40px 0 40px;
+  }
+
+  @media ($XL) {
+    padding:  25px 70px 0 70px;
+  }
+
+  @media ($XXL) {
+    padding:  10px 70px 0 70px;
+  }
+}
+
+.le-shop-controls-bottom-row__item {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.le-shop-controls-bottom-row__item-text {
+  color: var(--Black-transparent, rgba(0, 0, 0, 0.40));
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16.806px; /* 168.062% */
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+
+  @media ($XL) {
+    font-family: "Helvetica Neue";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 16px */
+    letter-spacing: -0.32px;
+  }
+}
+
+.le-shop-controls-bottom-row__item-search {
+  margin-left: auto;
+}
+
+.le-shop-controls-bottom-row__item-input {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.40);
+  color: var(--Black-transparent, rgba(0, 0, 0, 0.40));
+}
+
+.le-shop-controls-bottom-row__item-input:focus {
+  outline: none;
+}
+
+.le-shop-products {
+  margin-bottom: 45px;
+
+  @media ($M) {
+    margin-bottom: 85px;
+  }
+
+  @media ($L) {
+    margin-bottom: 200px;
+  }
+
+  @media ($XL) {
+    margin-bottom: 200px;
+  }
+
+  @media ($XXL) {
+    margin-bottom: 200px;
+  }
+}
+
+.le-shop-products-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px 20px;
+}
+
+.le-shop-product {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: calc(50% - 10px);
+  aspect-ratio: 1;
+  background-color: var(--Grey, #F6F6F6);
+
+  @media ($M) {
+    width: 200px;
+  }
+
+  @media ($L) {
+    width: 278px;
+  }
+
+  @media ($XL) {
+    width: 360px;
+    height: 343px;
+    aspect-ratio: unset;
+    background-color: transparent;
+  }
+
+  @media ($XXL) {
+    width: 440px;
+    height: 420px;
+  }
+}
+
+.le-shop-product:hover {
+  @media ($XL) {
+    background-color: var(--Grey, #F6F6F6);
+  }
+}
+
+.le-shop-product__pic {
+  width: 135px;
+  aspect-ratio: 1;
+  object-fit: cover;
+
+  @media ($M) {
+    width: 85%;
+  }
+
+  @media ($L) {
+    //width: 250px;
+  }
+
+  @media ($XL) {
+    //width: 360px;
+  }
+
+  @media ($XXL) {
+
+  }
+
+}
+
+.le-shop-product__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  margin: auto;
+  max-width: 85%;
+
+  color: #000;
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 15px */
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+
+  @media ($M) {
+
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    display: none;
+    font-size: 50px;
+    line-height: 90%; /* 45px */
+    letter-spacing: -1px;
+    bottom: -26px;
+    max-width: 100%;
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-shop-product__price {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -24px;
+  margin: auto;
+
+  color: #000;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.24px;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media ($XL) {
+    display: none;
+    font-size: 16px;
+    line-height: 100%; /* 16px */
+    bottom: -48px;
+  }
+}
+
+.le-shop-product:hover .le-shop-product__title {
+  @media ($XL) {
+    display: block;
+  }
+}
+
+.le-shop-product:hover .le-shop-product__price {
+  @media ($XL) {
+    display: block;
+  }
+}
