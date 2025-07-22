@@ -1,0 +1,96 @@
+<section class="le-shop">
+    <div class="le-shop-controls">
+        <div class="le-shop-controls-top-row">
+            {% comment %} <a href="/" class="le-shop-controls-top-row__item le-shop-controls-top-row__item_active">УКРАШЕНИЯ</a>
+            <a href="/" class="le-shop-controls-top-row__item">ОДЕЖДА</a> {% endcomment %}
+            {% for cat in collections %}
+                {% assign is_active = false %}
+                {% if cat.id == collection.id %}
+                  {% assign is_active = true %}
+                {% elsif collection.parent %}
+                  {% if cat.id == collection.parent.id %}
+                    {% assign is_active = true %}
+                  {% endif %}
+                {% endif %}
+                <a href="{{ cat.url }}" class="le-shop-controls-top-row__item{% if is_active %} le-shop-controls-top-row__item_active{% endif %}">
+                  {{ cat.title }}
+                </a>
+              {% endfor %}
+        </div>
+
+        
+        {% unless collection.handle == "all" %}
+            {% for cat in collections %}
+                {% if collection.id == cat.id or collection.parent.id == cat.id %}  
+                    <div class="le-shop-controls-middle-row">
+                        {% for subcat in cat.subcollections  %}
+                        <a href="{{ subcat.url }}" class="le-shop-controls-middle-row__item{% if subcat.id == collection.id %} le-shop-controls-middle-row__item_active{% endif %}">
+                            {{ subcat.title }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else  %}
+            {% for cat in collections %}
+                {% if forloop.first %}
+                    <div class="le-shop-controls-middle-row">
+                        {% for subcat in cat.subcollections  %}
+                        <a href="{{ subcat.url }}" class="le-shop-controls-middle-row__item{% if subcat.id == collection.id %} le-shop-controls-middle-row__item_active{% endif %}">
+                            {{ subcat.title }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endunless %}
+
+        <div class="le-shop-controls-bottom-row">
+            <form method="get">
+                <label class="le-shop-controls-bottom-row__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                        <rect x="0.5" y="0.75" width="13" height="13" stroke="black" stroke-opacity="0.4"/>
+                    </svg>
+                    <span class="le-shop-controls-bottom-row__item-text">В НАЛИЧИИ</span>
+                    <input type="checkbox" name="available" value="1" {% if params.available == '1' %}checked{% endif %}>
+                </label>
+                <label class="le-shop-controls-bottom-row__item">
+                    <span class="le-shop-controls-bottom-row__item-text">ДОРОЖЕ</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
+                        <path d="M3.32809 14.3536C3.52335 14.5488 3.83993 14.5488 4.03519 14.3536L7.21717 11.1716C7.41244 10.9763 7.41244 10.6597 7.21717 10.4645C7.02191 10.2692 6.70533 10.2692 6.51007 10.4645L3.68164 13.2929L0.853214 10.4645C0.657951 10.2692 0.341369 10.2692 0.146107 10.4645C-0.0491555 10.6597 -0.0491555 10.9763 0.146107 11.1716L3.32809 14.3536ZM3.18164 0L3.18164 14H4.18164L4.18164 0L3.18164 0Z" fill="black" fill-opacity="0.4"/>
+                    </svg>
+                    <input type="radio" name="order" value="price" onchange="this.form.submit()">
+                </label>
+                <label class="le-shop-controls-bottom-row__item">
+                    <span class="le-shop-controls-bottom-row__item-text">новинки</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
+                        <path d="M4.39994 0.146447C4.20468 -0.0488155 3.8881 -0.0488155 3.69283 0.146447L0.510853 3.32843C0.315591 3.52369 0.315591 3.84027 0.510853 4.03553C0.706115 4.2308 1.0227 4.2308 1.21796 4.03553L4.04639 1.20711L6.87481 4.03553C7.07008 4.2308 7.38666 4.2308 7.58192 4.03553C7.77718 3.84027 7.77718 3.52369 7.58192 3.32843L4.39994 0.146447ZM3.54639 0.5L3.54639 14.5H4.54639L4.54639 0.5L3.54639 0.5Z" fill="black" fill-opacity="0.4"/>
+                    </svg>
+                    <input type="radio" name="order" value="descending_age" onchange="this.form.submit()">
+                </label>
+            </form>
+
+            <form method="get" class="le-shop-controls-bottom-row__item le-shop-controls-bottom-row__item-search">
+                <span class="le-shop-controls-bottom-row__item-text">поиск</span>
+                <input type="search" name="q" value="{{ params.q }}" class="le-shop-controls-bottom-row__item-input">
+            </form>
+        </div>
+    </div>
+    <div class="le-shop-products">
+        <div class="container">
+            <div class="le-shop-products-inner">
+                {% for product in collection.products %}
+                    <a href="{{ product.url }}" class="le-shop-product">
+                        <img src="{{ product.images.first.medium_url }}" alt="{{ product.title }}" class="le-shop-product__pic">
+                        <div class="le-shop-product__title">{{ product.title }}</div>
+                        <span class="le-shop-product__price">
+                            {% if product.variants.size > 0 %}
+                                {{ product.variants.first.price | money }}
+                              {% endif %}
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

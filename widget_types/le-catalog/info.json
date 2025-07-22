@@ -1,0 +1,22 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "Каталог"
+  },
+  "handle": "le-catalog",
+  "description": {
+    "ru": "Каталог"
+  },
+  "page_kinds": [
+    "collection"
+  ],
+  "widget_list_kinds": [
+    "content"
+  ],
+  "generation": 4,
+  "widget_category_handle": "collection-products",
+  "libraries": [
+    "jquery",
+    "my-layout"
+  ]
+}
