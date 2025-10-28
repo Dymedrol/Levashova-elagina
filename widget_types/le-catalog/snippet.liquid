@@ -66,7 +66,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
                         <path d="M4.39994 0.146447C4.20468 -0.0488155 3.8881 -0.0488155 3.69283 0.146447L0.510853 3.32843C0.315591 3.52369 0.315591 3.84027 0.510853 4.03553C0.706115 4.2308 1.0227 4.2308 1.21796 4.03553L4.04639 1.20711L6.87481 4.03553C7.07008 4.2308 7.38666 4.2308 7.58192 4.03553C7.77718 3.84027 7.77718 3.52369 7.58192 3.32843L4.39994 0.146447ZM3.54639 0.5L3.54639 14.5H4.54639L4.54639 0.5L3.54639 0.5Z" fill="black" fill-opacity="0.4"/>
                     </svg>
-                    <input type="radio" name="order" value="descending_age" onchange="this.form.submit()">
+                    <input type="radio" name="order" value="age" onchange="this.form.submit()">
                 </label>
             </form>
 
@@ -79,18 +79,27 @@
     <div class="le-shop-products">
         <div class="container">
             <div class="le-shop-products-inner">
-                {% for product in collection.products %}
-                    <a href="{{ product.url }}" class="le-shop-product">
-                        <img src="{{ product.images.first.medium_url }}" alt="{{ product.title }}" class="le-shop-product__pic">
-                        <div class="le-shop-product__title">{{ product.title }}</div>
-                        <span class="le-shop-product__price">
-                            {% if product.variants.size > 0 %}
-                                {{ product.variants.first.price | money }}
-                              {% endif %}
-                        </span>
-                    </a>
-                {% endfor %}
+                {%- for product in collection.products %}
+                  {%- assign is_available = false %}
+                  {%- for variant in product.variants %}
+                    {%- if variant.available %}{% assign is_available = true %}{% break %}{% endif %}
+                  {%- endfor %}
+                  <a href="{{ product.url }}" class="le-shop-product{% if is_available %} le-shop-product_available{% endif %}">
+                    <img src="{{ product.images.first.medium_url }}" alt="{{ product.title }}" class="le-shop-product__pic">
+                    <div class="le-shop-product__title">{{ product.title }}</div>
+                    <span class="le-shop-product__price">
+                      {% if product.variants.size > 0 %}
+                        {{ product.variants.first.price | money }}
+                      {% endif %}
+                    </span>
+                  </a>
+                {%- endfor %}
             </div>
         </div>
     </div>
 </section>
+
+!!{{ page.url  }}!!
+yy{{ page.title  }}
+xx{{ page.id  }}
+{{ order }}sss

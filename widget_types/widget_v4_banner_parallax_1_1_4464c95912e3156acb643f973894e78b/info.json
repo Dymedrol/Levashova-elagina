@@ -1,0 +1,25 @@
+{
+  "type": "BlockListWidgetType",
+  "name": {
+    "ru": "Баннер с эффектом параллакс, текстом и кнопкой"
+  },
+  "handle": "widget_v4_banner_parallax_1_1_4464c95912e3156acb643f973894e78b",
+  "description": {
+    "ru": "Баннер с эффектом параллакс, текстом и кнопкой поверх картинки"
+  },
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "before_content",
+    "content",
+    "after_content"
+  ],
+  "generation": 4,
+  "widget_category_handle": "banner",
+  "libraries": [
+    "jquery",
+    "my-layout"
+  ],
+  "block_template_handle": "system-banner-block-2"
+}

@@ -1,0 +1,14 @@
+{
+  "ru": {
+    "content": "Содержимое",
+    "stylization": "Стилизация",
+    "image_desktop": "Изображение (десктоп)",
+    "image_mobile": "Изображение (мобильное)",
+    "alt_text": "Alt-текст",
+    "object_fit": "Object-fit",
+    "object_position": "Object-position"
+  },
+  "ua": {},
+  "en": {},
+  "es": {}
+}

@@ -1,0 +1,55 @@
+{
+  "content": [
+    {
+      "type": "group",
+      "name": "{{ messages.content }}",
+      "items": [
+        {
+          "name": "image_desktop",
+          "label": "{{ messages.image_desktop }}",
+          "type": "image_picker",
+          "value": null
+        },
+        {
+          "name": "image_mobile",
+          "label": "{{ messages.image_mobile }}",
+          "type": "image_picker",
+          "value": null
+        },
+        {
+          "name": "alt",
+          "label": "{{ messages.alt_text }}",
+          "type": "text",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "design": [
+    {
+      "type": "group",
+      "name": "{{ messages.stylization }}",
+      "items": [
+        {
+          "name": "object_fit",
+          "label": "{{ messages.object_fit }}",
+          "type": "select",
+          "options": [
+            ["cover", "cover"],
+            ["contain", "contain"],
+            ["fill", "fill"],
+            ["none", "none"],
+            ["scale-down", "scale-down"]
+          ],
+          "value": "cover"
+        },
+        {
+          "name": "object_position",
+          "label": "{{ messages.object_position }}",
+          "type": "text",
+          "value": "center center"
+        }
+      ]
+    }
+  ]
+}

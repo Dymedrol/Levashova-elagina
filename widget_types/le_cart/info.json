@@ -1,0 +1,23 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "le_cart"
+  },
+  "handle": "le_cart",
+  "description": {
+    "ru": "LE корзина"
+  },
+  "page_kinds": [
+    "cart"
+  ],
+  "widget_list_kinds": [
+    "content"
+  ],
+  "generation": 4,
+  "widget_category_handle": "cart",
+  "libraries": [
+    "commonjs_v2",
+    "jquery",
+    "my-layout"
+  ]
+}

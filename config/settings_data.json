@@ -5,8 +5,8 @@
   "presets": {
     "custom": {
       "bg": "#FFFFFF",
-      "color-btn-bg": "#76BC21",
-      "color-accent-text": "#76BC21",
+      "color-btn-bg": "#000000",
+      "color-accent-text": "#000000",
       "color-text-dark": "#333333",
       "color-text-light": "#ffffff",
       "icons_pack": "insales-default",
@@ -41,7 +41,7 @@
       "heading-ratio": 1.5,
       "heading-weight": 600,
       "color-preset": "custom",
-      "_settings_version": 1752562844.279043
+      "_settings_version": 1753182128.4149227
     }
   },
   "remote_theme_id": 653,

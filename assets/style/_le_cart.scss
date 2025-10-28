@@ -244,8 +244,6 @@
 }
 
 .le-cart-item__quantity {
-  display: flex;
-  gap: 15px;
   color: var(--Black, #000);
   leading-trim: both;
   text-edge: cap;
@@ -489,7 +487,7 @@
 
 .le-cart-item__product-option__color {
   @media ($M) {
-    padding: 11.5px;
+    padding: 15px;
   }
 }
 
@@ -502,6 +500,15 @@
 
 .le-cart-item__product-option__color_red span {
   background-color: #F00;
+}
+
+.le-cart-item__product-option__color_blue span {
+  background: rgba(11, 20, 255, 1);
+
+}
+
+.le-cart-item__product-option__color_green span {
+  background: rgba(98, 197, 84, 1);
 }
 
 .le-cart-item__product-options-price {

@@ -1,0 +1,23 @@
+{% assign img_desktop = widget.image_desktop | default: 'no_image_medium.jpg' | asset_url %}
+{% assign img_mobile_raw = widget.image_mobile %}
+{% if img_mobile_raw %}
+  {% assign img_mobile = widget.image_mobile | asset_url %}
+{% else %}
+  {% assign img_mobile = img_desktop %}
+{% endif %}
+{% assign alt = widget.alt | default: '' %}
+{% assign object_fit = widget.object_fit | default: 'cover' %}
+{% assign object_position = widget.object_position | default: 'center center' %}
+
+<section class="le-cover" style="--le-cover-object-fit: {{ object_fit }}; --le-cover-object-position: {{ object_position }};">
+  <picture class="le-cover__picture">
+    <source srcset="{{ img_mobile }}" media="(max-width: 720px)">
+    <img class="le-cover__img" src="{{ img_desktop }}" alt="{{ alt }}" loading="eager" />
+  </picture>
+</section>
+
+<style>
+.le-cover { width: 100%; height: 100vh; }
+.le-cover__picture, .le-cover__img { display: block; width: 100%; height: 100%; }
+.le-cover__img { object-fit: var(--le-cover-object-fit); object-position: var(--le-cover-object-position); }
+</style>
