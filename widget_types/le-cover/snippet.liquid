@@ -1,13 +1,13 @@
-{% assign img_desktop = widget.image_desktop | default: 'no_image_medium.jpg' | asset_url %}
-{% assign img_mobile_raw = widget.image_mobile %}
+{% assign img_desktop = widget_settings.image_desktop | default: 'no_image_medium.jpg' %}
+{% assign img_mobile_raw = widget_settings.image_mobile %}
 {% if img_mobile_raw %}
-  {% assign img_mobile = widget.image_mobile | asset_url %}
+  {% assign img_mobile = widget_settings.image_mobile %}
 {% else %}
   {% assign img_mobile = img_desktop %}
 {% endif %}
-{% assign alt = widget.alt | default: '' %}
-{% assign object_fit = widget.object_fit | default: 'cover' %}
-{% assign object_position = widget.object_position | default: 'center center' %}
+{% assign alt = widget_settings.alt | default: '' %}
+{% assign object_fit = widget_settings.object_fit | default: 'cover' %}
+{% assign object_position = widget_settings.object_position | default: 'center center' %}
 
 <section class="le-cover" style="--le-cover-object-fit: {{ object_fit }}; --le-cover-object-position: {{ object_position }};">
   <picture class="le-cover__picture">
@@ -16,8 +16,21 @@
   </picture>
 </section>
 
+
 <style>
-.le-cover { width: 100%; height: 100vh; }
-.le-cover__picture, .le-cover__img { display: block; width: 100%; height: 100%; }
-.le-cover__img { object-fit: var(--le-cover-object-fit); object-position: var(--le-cover-object-position); }
+    .le-header {
+        position: fixed !important;
+        width: 100% !important;
+    }
+
+    {% if widget_settings.revert_header %}
+        .le-header .le-header-nav-item {
+            color: #fff !important;
+        }
+
+        .le-header-cross path{
+            fill: #fff !important;
+        }
+    {% endif %}
 </style>
+

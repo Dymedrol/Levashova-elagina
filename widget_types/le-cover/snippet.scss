@@ -1,0 +1,16 @@
+.le-cover {
+  width: 100%;
+  height: 100vh;
+}
+
+.le-cover__picture,
+.le-cover__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.le-cover__img {
+  object-fit: var(--le-cover-object-fit);
+  object-position: var(--le-cover-object-position);
+}
