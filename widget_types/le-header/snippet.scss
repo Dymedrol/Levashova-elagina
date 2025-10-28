@@ -1,0 +1,357 @@
+.le-header {
+    position: relative;
+    padding-top: 10px;
+    //border-bottom: 1px solid rgba(0, 0, 0, 0.40);
+    z-index: 5;
+
+    &.dropdown-open {
+        background-color: #fff;
+
+        @media (max-width: 719px) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.40);
+            padding-bottom: 10px;
+        }
+    }
+  
+    @media (min-width: 720px) {
+      padding-top: 20px;
+      border-bottom: 0;
+    }
+  
+    @media (min-width: 960px) {
+  
+    }
+  
+    @media (min-width: 1200px) {
+      padding-top: 30px;
+    }
+  
+    @media (min-width: 1440px) {
+  
+    }
+  
+  }
+  
+  .le-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  
+    @media (min-width: 720px) {
+  
+    }
+  
+    @media (min-width: 960px) {
+  
+    }
+  
+    @media (min-width: 1200px) {
+    }
+  
+    @media (min-width: 1440px) {
+  
+    }
+  }
+  
+  .le-header-cross {
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    
+    &:hover {
+      opacity: 0.7;
+    }
+    
+    &.active {
+      opacity: 0.5;
+    }
+  
+    @media (min-width: 1200px) {
+      width: 61px;
+      height: 61px;
+    }
+  }
+  
+  .le-header-logo {
+    height: 35px;
+    width: auto;
+  
+    @media (min-width: 1200px) {
+      height: 89px;
+    }
+  }
+  
+  .le-header-cart {
+    position: relative;
+    margin-top: 3px;
+  
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
+  
+  .le-header-cart-count {
+    position: absolute;
+    top: 17px;
+    right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 9px;
+  }
+  
+  .le-header-nav {
+    display: none;
+  
+    @media (min-width: 1200px) {
+      display: flex;
+      gap: 40px;
+    }
+  }
+  
+  .le-header-nav-item {
+    color: #000;
+    font-family: "Helvetica Neue";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 12px */
+    letter-spacing: -0.24px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  
+  .le-header-justifyer1 {
+    @media (min-width: 1200px) {
+      display: flex;
+      width: 360px;
+    }
+  }
+  
+  .le-header-justifyer2 {
+    display: none;
+    @media (min-width: 1200px) {
+      display: flex;
+      justify-content: flex-end;
+      width: 360px;
+    }
+  }
+  
+  .le-header-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 30px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.40);
+    background-color: #fff;
+    
+    &.active {
+      display: block;
+    }
+  
+    @media (min-width: 720px) {
+      border: 0;
+      padding: 56px 0 40px;
+    }
+  
+    @media (min-width: 960px) {
+      padding: 60px 0 46px;
+    }
+  
+    @media (min-width: 1200px) {
+      padding: 50px 0 41px;
+    }
+  
+    @media (min-width: 1440px) {
+      padding: 50px 0 41px;
+    }
+  }
+  
+  .le-header-dropdown__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  
+    @media (min-width: 720px) {
+      flex-direction: row;
+    }
+  
+    @media (min-width: 960px) {
+      gap: 69px;
+    }
+  
+    @media (min-width: 1200px) {
+      gap: 51px;
+    }
+  
+    @media (min-width: 1440px) {
+      gap: 90px;
+    }
+  }
+  
+  .le-header-dropdown-menu {
+    flex-grow: 1;
+  }
+  
+  .le-header-dropdown-banner {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    background-color: lightgrey;
+  
+    @media (min-width: 720px) {
+      width: 308px;
+      height: 290px;
+    }
+  
+    @media (min-width: 960px) {
+      width: 430px;
+      height: 300px;
+    }
+  
+    @media (min-width: 1200px) {
+      width: 550px;
+      height: 340px;
+    }
+  
+    @media (min-width: 1440px) {
+      width: 668px;
+      height: 340px;
+    }
+  }
+  
+  .le-header-dropdown-banner__text {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    color: #fff;
+    text-align: right;
+    font-family: "Helvetica Neue";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 12px */
+    text-transform: uppercase;
+  
+    @media (min-width: 720px) {
+      right: 20px;
+      bottom: 16px;
+    }
+  
+    @media (min-width: 960px) {
+      font-size: 20px;
+      right: 25px;
+      bottom: 13px;
+    }
+  
+    @media (min-width: 1200px) {
+      right: 30px;
+      bottom: 15px;
+    }
+  
+    @media (min-width: 1440px) {
+      right: 38px;
+      bottom: 15px;
+    }
+  }
+  
+  .le-header-dropdown-menu-mobile {
+    @media (min-width: 720px) {
+      display: none;
+    }
+  }
+  
+  .le-header-dropdown-menu-desktop {
+    display: none;
+    @media (min-width: 720px) {
+      display: flex;
+    }
+  }
+  
+  
+  .le-header-dropdown-menu-mobile-header {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  
+  .le-header-dropdown-menu-mobile-header__item {
+    width: 33.3%;
+    color: var(--Black, #000);
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 15px */
+    text-transform: uppercase;
+    opacity: .4;
+    cursor: pointer;
+  }
+  
+  .le-header-dropdown-menu-mobile-header__item_active {
+    opacity: 1;
+  }
+  
+  .le-header-dropdown-menu-mobile-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 0;
+  }
+  
+  .le-header-dropdown-menu-mobile-body__item {
+    width: 33.3%;
+    color: var(--Black, #000);
+    font-family: "Helvetica Neue";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 12px */
+    text-transform: uppercase;
+  }
+  
+  .le-header-dropdown-menu-desktop-col {
+    width: 33.3%;
+  }
+  
+  .le-header-dropdown-menu-desktop__title {
+    color: var(--Black, #000);
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 15px */
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  
+    @media (min-width: 1200px) {
+      font-size: 20px;
+    }
+  }
+  
+  .le-header-dropdown-menu-desktop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+    @media (min-width: 1200px) {
+      gap: 15px;
+    }
+  }
+  
+  .le-header-dropdown-menu-desktop-list__item {
+    color: var(--Black, #000);
+    font-family: "Helvetica Neue";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 12px */
+    text-transform: uppercase;
+  }
