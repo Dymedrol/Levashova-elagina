@@ -1,0 +1,62 @@
+<footer class="le-footer">
+    <div class="container">
+        <div class="le-footer-inner">
+            <form class="le-footer-subscribe">
+                <button class="le-footer-subscribe__button">подписаться</button>
+                <input type="email" name="" id="" placeholder="e-mail" class="le-footer-subscribe__input">
+                <label class="le-footer-subscribe__agreement">
+                    <input type="checkbox" name="" id="" class="le-footer-subscribe__agreement-input">
+                    <svg class="le-footer-subscribe__agreement-checkbox" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <rect x="0.5" y="0.5" width="13" height="13" stroke="white"/>
+                        <path d="M11 4L5.35294 10L3 7.5" stroke="white" stroke-width="1.06863" stroke-miterlimit="10"/>
+                    </svg>
+                    <span class="le-footer-subscribe__agreement-text">Я даю согласие на обработку моих персональных данныхи ознакомлен (а) с политикой конфиденцильности.</span>
+                </label>
+            </form>
+
+            <div class="le-footer-row">
+                <div class="le-footer-contacts">
+                    <div class="le-footer-contacts-col">
+                        <div class="le-footer-contacts__item">{{ widget_settings.address_text | default: 'МАЛАЯ НИКИТСКАЯ 8/1' }}</div>
+                        <div class="le-footer-contacts__email">
+                            <a href="tel:{{ widget_settings.phone_text | default: '+7 916 272-51-38' | replace: ' ', '' | replace: '-', '' }}" class="le-footer-contacts__item">{{ widget_settings.phone_text | default: '+7 916 272-51-38' }}</a>
+                            <a href="mailto:{{ widget_settings.email_text | default: 'LEVASHOVA-ELAGINA@YANDEX.RU' }}" class="le-footer-contacts__item">{{ widget_settings.email_text | default: 'LEVASHOVA-ELAGINA@YANDEX.RU' }}</a>
+                        </div>
+                    </div>
+                    <div class="le-footer-contacts-col">
+                        <div class="le-footer-contacts__item">{{ widget_settings.hours_text | default: 'Пн-Вс: 11 — 22' }}</div>
+                        <div class="le-footer-contacts__socials">
+                            {% for social in data.blocks %}
+                                <a href="{{ social.link  }}" class="le-footer-contacts__social">
+                                    <img src="{{ social.image | image_url: 26 }}" alt="{{ social.title }}" class="le-footer-contacts__social-image">
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="le-footer-bottom-row">
+                    <div class="le-footer-nav">
+                        <div class="le-footer-nav-col">
+                            {% for link in linklists.footer-1.links %}
+                                <a href="{{ link.url }}" class="le-footer-nav-item">{{ link.title }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="le-footer-nav-col">
+                            {% for link in linklists.footer-2.links %}
+                                <a href="{{ link.url }}" class="le-footer-nav-item">{{ link.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="le-footer-payments">
+                        <div class="le-footer-payments-title">Способы оплаты:</div>
+                        <div class="le-footer-payments-list">
+                            <img src="{{ 'MasterCard.svg' | asset_url }}" alt="" class="le-footer-payments-item">
+                            <img src="{{ 'Visa.svg' | asset_url }}" alt="" class="le-footer-payments-item">
+                            <img src="{{ 'Mir.svg' | asset_url }}" alt="" class="le-footer-payments-item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

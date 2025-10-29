@@ -1,11 +1,11 @@
 {
-  "type": "SimpleWidgetType",
+  "type": "BlockListWidgetType",
   "name": {
-    "ru": "Футер"
+    "ru": "LE FOOTER NEW"
   },
-  "handle": "le-footer",
+  "handle": "le-footer-new",
   "description": {
-    "ru": "Подвал сайта"
+    "ru": "LE FOOTER NEW"
   },
   "page_kinds": [
     "all"
@@ -16,7 +16,8 @@
   "generation": 4,
   "widget_category_handle": "footers",
   "libraries": [
-    "jquery",
+    "commonjs_v2",
     "my-layout"
-  ]
+  ],
+  "block_template_handle": "footer-social-item"
 }

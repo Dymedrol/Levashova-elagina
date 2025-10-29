@@ -1,0 +1,15 @@
+{
+  "layout-wide-bg":false,
+  "layout-wide-content":false,
+  "layout-edge": true,
+  "layout-pt":0,
+  "layout-pb":0,
+  "hide-mobile":false,
+  "hide-desktop":false,
+  "menu_handle":"main-menu",
+  "align-text":"left",
+  "address_text": "МАЛАЯ НИКИТСКАЯ 8/1",
+  "hours_text": "Пн-Вс: 11 — 22",
+  "phone_text": "+7 916 272-51-38",
+  "email_text": "LEVASHOVA-ELAGINA@YANDEX.RU"
+}
