@@ -207,6 +207,9 @@
     width: 100%;
     height: 170px;
     background-color: lightgrey;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   
     @media (min-width: 720px) {
       width: 308px;
@@ -267,6 +270,16 @@
   .le-header-dropdown-menu-mobile {
     @media (min-width: 720px) {
       display: none;
+    }
+
+    &.has-tabs {
+      .le-header-dropdown-menu-mobile-body {
+        display: none;
+      }
+
+      .le-header-dropdown-menu-mobile-body.is-active {
+        display: flex;
+      }
     }
   }
   

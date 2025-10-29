@@ -1,15 +1,24 @@
 {
   "content": [
     {
+      "type": "group",
+      "name": "Баннер",
       "items": [
         {
           "class": "text",
-          "name": "menu_handle",
-          "label": "{{ messages.menu }}",
-          "value": "main-menu",
-          "type": "navigation",
-          "placeholder": null,
-          "general": true
+          "name": "banner_text",
+          "label": "Текст баннера",
+          "value": "",
+          "type": "text",
+          "placeholder": "Например: NEW RINGS"
+        },
+        {
+          "name": "banner_image",
+          "label": "Изображение баннера",
+          "value": "",
+          "type": "file",
+          "clearable": true,
+          "enable_server_reload": true
         }
       ]
     }

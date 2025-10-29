@@ -7,5 +7,7 @@
   "hide-mobile":false,
   "hide-desktop":false,
   "menu_handle":"main-menu",
-  "align-text":"left"
+  "align-text":"left",
+  "banner_text": "NEW RINGS",
+  "banner_image": ""
 }
