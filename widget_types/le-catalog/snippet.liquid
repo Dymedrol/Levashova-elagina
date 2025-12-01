@@ -1,8 +1,7 @@
 <section class="le-shop">
     <div class="le-shop-controls">
+
         <div class="le-shop-controls-top-row">
-            {% comment %} <a href="/" class="le-shop-controls-top-row__item le-shop-controls-top-row__item_active">УКРАШЕНИЯ</a>
-            <a href="/" class="le-shop-controls-top-row__item">ОДЕЖДА</a> {% endcomment %}
             {% for cat in collections %}
                 {% assign is_active = false %}
                 {% if cat.id == collection.id %}
@@ -15,18 +14,20 @@
                 <a href="{{ cat.url }}" class="le-shop-controls-top-row__item{% if is_active %} le-shop-controls-top-row__item_active{% endif %}">
                   {{ cat.title }}
                 </a>
-              {% endfor %}
+            {% endfor %}
         </div>
-
         
         {% unless collection.handle == "all" %}
             {% for cat in collections %}
                 {% if collection.id == cat.id or collection.parent.id == cat.id %}  
                     <div class="le-shop-controls-middle-row">
-                        {% for subcat in cat.subcollections  %}
-                        <a href="{{ subcat.url }}" class="le-shop-controls-middle-row__item{% if subcat.id == collection.id %} le-shop-controls-middle-row__item_active{% endif %}">
-                            {{ subcat.title }}
+                        <a href="{{ cat.url }}" class="le-shop-controls-middle-row__item{% if collection.id == cat.id %} le-shop-controls-middle-row__item_active{% endif %}">
+                            все
                         </a>
+                        {% for subcat in cat.subcollections  %}
+                            <a href="{{ subcat.url }}" class="le-shop-controls-middle-row__item{% if subcat.id == collection.id %} le-shop-controls-middle-row__item_active{% endif %}">
+                                {{ subcat.title }}
+                            </a>
                         {% endfor %}
                     </div>
                 {% endif %}
@@ -35,10 +36,13 @@
             {% for cat in collections %}
                 {% if forloop.first %}
                     <div class="le-shop-controls-middle-row">
-                        {% for subcat in cat.subcollections  %}
-                        <a href="{{ subcat.url }}" class="le-shop-controls-middle-row__item{% if subcat.id == collection.id %} le-shop-controls-middle-row__item_active{% endif %}">
-                            {{ subcat.title }}
+                        <a href="{{ cat.url }}" class="le-shop-controls-middle-row__item{% if subcat.id == collection.id %} le-shop-controls-middle-row__item_active{% endif %}">
+                            все
                         </a>
+                        {% for subcat in cat.subcollections  %}
+                            <a href="{{ subcat.url }}" class="le-shop-controls-middle-row__item{% if subcat.id == collection.id %} le-shop-controls-middle-row__item_active{% endif %}">
+                                {{ subcat.title }}
+                            </a>
                         {% endfor %}
                     </div>
                 {% endif %}
@@ -52,7 +56,7 @@
                         <rect x="0.5" y="0.75" width="13" height="13" stroke="black" stroke-opacity="0.4"/>
                     </svg>
                     <span class="le-shop-controls-bottom-row__item-text">В НАЛИЧИИ</span>
-                    <input type="checkbox" name="available" value="1" {% if params.available == '1' %}checked{% endif %}>
+                    <input onchange="this.form.submit()" type="checkbox" name="available" value="1" {% if params.available == '1' %}checked{% endif %}>
                 </label>
                 <label class="le-shop-controls-bottom-row__item">
                     <span class="le-shop-controls-bottom-row__item-text">ДОРОЖЕ</span>
@@ -72,10 +76,11 @@
 
             <form method="get" class="le-shop-controls-bottom-row__item le-shop-controls-bottom-row__item-search">
                 <span class="le-shop-controls-bottom-row__item-text">поиск</span>
-                <input type="search" name="q" value="{{ params.q }}" class="le-shop-controls-bottom-row__item-input">
+                <input type="search" name="q" value="{{ search.query }}" class="le-shop-controls-bottom-row__item-input">
             </form>
         </div>
     </div>
+
     <div class="le-shop-products">
         <div class="container">
             <div class="le-shop-products-inner">
@@ -99,7 +104,16 @@
     </div>
 </section>
 
-!!{{ page.url  }}!!
-yy{{ page.title  }}
-xx{{ page.id  }}
-{{ order }}sss
+
+{% comment %}
+{{ order }} order
+{{ params.available }} is_available
+{% if filter.title %}
+    {{ filter.title }}
+  {% else %}
+    {{ collection.title }}
+  {% endif %}
+
+  {{ root.title }}
+  {{ template }}
+{% endcomment %}
