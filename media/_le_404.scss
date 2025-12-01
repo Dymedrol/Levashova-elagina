@@ -1,0 +1,207 @@
+.le-404 {
+  padding-top: 60px;
+  padding-bottom: 50px;
+
+  @media ($M) {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  @media ($L) {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  @media ($XL) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @media ($XXL) {
+    padding-top: 100px;
+  }
+}
+
+.le-404-breadcrumbs {
+  margin-bottom: 40px;
+
+  @media ($M) {
+    margin-bottom: 46px;
+  }
+
+  @media ($L) {
+    margin-bottom: 46px;
+  }
+
+  @media ($XL) {
+    margin-bottom: 52px;
+  }
+
+  @media ($XXL) {
+    margin-bottom: 70px;
+  }
+}
+
+.le-404-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media ($M) {
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  @media ($L) {
+    width: 100%;
+  }
+
+  @media ($XL) {
+    width: 100%;
+  }
+
+  @media ($XXL) {
+    width: 100%;
+  }
+}
+
+.le-404-col {
+  display: flex;
+  flex-direction: column;
+
+  @media ($M) {
+  }
+
+  @media ($L) {
+  }
+
+  @media ($XL) {
+    width: 440px;
+  }
+
+  @media ($XXL) {
+
+  }
+}
+
+.le-404__title {
+  color: var(--Black, #000);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 25px */
+  text-transform: uppercase;
+  max-width: 226px;
+  margin-bottom: 20px;
+
+  @media ($M) {
+    max-width: 408px;
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    font-size: 62px;
+    line-height: 100%; /* 62px */
+    max-width: unset;
+  }
+
+  @media ($XXL) {
+    max-width: 408px;
+  }
+}
+
+.le-404-subtitle {
+  color: var(--Black, #000);
+  font-family: "Helvetica Neue";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 16px */
+  letter-spacing: -2%;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+
+  @media ($XXL) {
+    max-width: 408px;
+  }
+}
+
+.le-404__description {
+  color: var(--Black, #000);
+  font-family: "Helvetica Neue";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 16px */
+  letter-spacing: -2%;
+  margin-bottom: 40px;
+
+  @media ($XXL) {
+    max-width: 408px;
+  }
+}
+.le-404_back {
+  display: flex;
+  height: 30px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+
+  color: #FFF;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+
+  @media ($M) {
+    padding: 0 30px;
+    font-size: 12px;
+    letter-spacing: -0.24px;
+  }
+
+  @media ($L) {
+
+  }
+
+  @media ($XL) {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  @media ($XXL) {
+    max-width: 408px;
+  }
+}
+
+.le-404-pic {
+  width: 306.761px;
+
+  @media ($M) {
+
+  }
+
+  @media ($L) {
+    width: 430px;
+  }
+
+  @media ($XL) {
+    width: 530px;
+  }
+
+  @media ($XXL) {
+    width: 670px;
+  }
+}

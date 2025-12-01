@@ -1,5 +1,18 @@
-<div class="layout" style="margin-top: 2rem; margin-bottom: 2rem;">
-  <div class="layout__content page-404">
-    {{ messages.page_404 }}
-  </div>
-</div>
+<main class="le-404">
+    <div class="container">
+        <div class="le-breadcrumbs le-404-breadcrumbs">
+            <a href="/" class="le-breadcrumbs__item">главная</a>
+            <div href="/" class="le-breadcrumbs__item">/</div>
+            <a href="/" class="le-breadcrumbs__item">404</a>
+        </div>
+        <div class="le-404-inner">
+            <div class="le-404-col">
+                <div class="le-404__title">СТРАНИЦА<br>НЕ НАЙДЕНА</div>
+                <div class="le-404-subtitle">Кажется что-то пошло не так.</div>
+                <div class="le-404__description">Страница, которую вы запрашиваете, не существует.Возможно она устарела, была удалена, или был введен неверный адрес в адресной строке.</div>
+                <a href="/" class="le-404_back">Вернуться на главную</a>
+            </div>
+            <img src="{{ '404.png' | asset_url }}" alt="" class="le-404-pic">
+        </div>
+    </div>
+</main>
