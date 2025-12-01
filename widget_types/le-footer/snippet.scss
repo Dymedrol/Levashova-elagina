@@ -1,0 +1,344 @@
+$XS: "min-width: 360px";
+$S: "min-width: 480px";
+$M: "min-width: 720px";
+$L: "min-width: 960px";
+$XL: "min-width: 1200px";
+$XXL: "min-width: 1440px";
+$XXXL: "min-width: 1920px";
+
+.le-footer {
+    background: var(--Black, #000);
+    padding: 30px 0 50px;
+  
+  @media ($M) {
+  
+    }
+  
+  @media ($L) {
+  
+    }
+  
+  @media ($XL) {
+      padding: 40px 0 55px;
+    }
+  
+  @media ($XXL) {
+  
+    }
+  }
+  
+  .le-footer-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .le-footer-subscribe {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .le-footer-subscribe__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10.687px;
+    border: 0.534px solid #FFF;
+    background: #000;
+  
+    color: #FFF;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Helvetica Neue";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14.102px; /* 117.519% */
+    text-transform: uppercase;
+    margin-right: 10px;
+  
+    @media ($XL) {
+      margin-right: 15px;
+      padding: 5px 10px;
+      font-size: 20px;
+      line-height: 100%; /* 20px */
+    }
+  }
+  
+  .le-footer-subscribe__input {
+    width: 186px;
+    height: 15px;
+  
+    color: rgba(255, 255, 255, 0.6);
+    font-family: "Helvetica Neue";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14.102px; /* 117.519% */
+    text-transform: uppercase;
+    text-align: center;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+  
+    &:focus {
+      outline: none;
+    }
+  
+  @media ($XL) {
+      width: 363px;
+      height: 32px;
+      font-size: 20px;
+      line-height: 100%; /* 20px */
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+  }
+  
+  .le-footer-subscribe__agreement {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+  
+    @media ($XL) {
+      gap: 10px;
+    }
+  }
+  
+  .le-footer-subscribe__agreement-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  
+  .le-footer-subscribe__agreement-checkbox {
+    width: 20px;
+    height: 20px;
+  
+  @media ($XL) {
+      width: 14px;
+      height: 14px;
+    }
+  
+    & path {
+      display: none;
+    }
+  }
+  
+  .le-footer-subscribe__agreement-input:checked ~ .le-footer-subscribe__agreement-checkbox path {
+    display: block;
+  }
+  
+  .le-footer-subscribe__agreement-text {
+    color: rgba(255, 255, 255, 0.40);
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Helvetica Neue";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%; /* 11px */
+    letter-spacing: -0.2px;
+    max-width: 270px;
+  
+  @media ($XL) {
+      max-width: 329px;
+      font-size: 12px;
+      line-height: 110%; /* 13.2px */
+    }
+  }
+  
+  .le-footer-row {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 31px;
+  
+  @media ($XL) {
+      flex-direction: row;
+      gap: 100px;
+    }
+  
+    @media ($XXL) {
+      gap: 20px;
+    }
+  }
+  
+  .le-footer-contacts {
+    display: flex;
+    justify-content: space-between;
+  
+  @media ($XL) {
+      gap: 100px;
+    }
+  
+  @media ($XXL) {
+      gap: 20px;
+    }
+  }
+  
+  .le-footer-contacts-col {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  
+  @media ($XL) {
+      gap: 40px;
+    }
+  
+  @media ($XXL) {
+      width: 256px;
+    }
+  }
+  
+  .le-footer-contacts-col:nth-child(2) {
+    align-items: flex-end;
+  
+    @media ($XXL) {
+      align-items: flex-start;
+    }
+  }
+  
+  .le-footer-contacts__item {
+    color: #FFF;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Helvetica Neue";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 5.473px; /* 54.734% */
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+  
+    @media ($XL) {
+      font-size: 12px;
+      line-height: 100%; /* 12px */
+      letter-spacing: 0;
+    }
+  }
+  
+  .le-footer-contacts__social {
+    width: fit-content;
+    height: fit-content;
+  }
+  
+  .le-footer-contacts__email {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  
+    @media ($XL) {
+      gap: 10px;
+    }
+  }
+  
+  .le-footer-bottom-row {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  
+  @media ($M) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+  @media ($XL) {
+      flex-grow: 1;
+    }
+  }
+  
+  .le-footer-nav {
+    display: flex;
+    gap: 20px;
+  
+    @media ($XL) {
+      gap: 100px;
+    }
+  
+    @media ($XXL) {
+      gap: 20px;
+    }
+  }
+  
+  .le-footer-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 150px;
+  
+    @media ($XL) {
+      width: fit-content;
+    }
+  
+    @media ($XXL) {
+      width: 256px;
+    }
+  }
+  
+  .le-footer-nav-item {
+    color: #FFF;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Helvetica Neue";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 16.8px */
+    text-transform: uppercase;
+  
+  }
+  
+  .le-footer-payments {
+    display: flex;
+    justify-content: space-between;
+  
+    @media ($M) {
+      justify-content: flex-start;
+      gap: 20px;
+    }
+  
+    @media ($XL) {
+      flex-direction: column;
+      gap: 18px;
+    }
+  }
+  
+  .le-footer-payments-title {
+    color: #FFF;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Helvetica Neue";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 12px */
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+  
+    @media ($XL) {
+      letter-spacing: 0;
+      font-size: 12px;
+      line-height: 100%; /* 12px */
+    }
+  }
+  
+  .le-footer-payments-list {
+    display: flex;
+    gap: 1px;
+  }
+  
+  .le-footer-payments-item {
+    object-fit: contain;
+    max-height: 13px;
+  
+    @media ($XL) {
+      max-height: 27px;
+    }
+  }

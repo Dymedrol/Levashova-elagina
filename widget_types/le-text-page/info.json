@@ -1,0 +1,23 @@
+{
+  "type": "BlockListWidgetType",
+  "name": {
+    "ru": "le-text-page"
+  },
+  "handle": "le-text-page",
+  "description": {
+    "ru": "le text page"
+  },
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "content"
+  ],
+  "generation": 4,
+  "widget_category_handle": "drugie",
+  "libraries": [
+    "commonjs_v2",
+    "my-layout"
+  ],
+  "block_template_handle": "le-text-ape-tab"
+}

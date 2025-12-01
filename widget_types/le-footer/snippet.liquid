@@ -1,0 +1,59 @@
+<footer class="le-footer">
+    <div class="container">
+        <div class="le-footer-inner">
+            <form class="le-footer-subscribe">
+                <button class="le-footer-subscribe__button">подписаться</button>
+                <input type="email" name="" id="" placeholder="e-mail" class="le-footer-subscribe__input">
+                <label class="le-footer-subscribe__agreement">
+                    <input type="checkbox" name="" id="" class="le-footer-subscribe__agreement-input">
+                    <svg class="le-footer-subscribe__agreement-checkbox" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <rect x="0.5" y="0.5" width="13" height="13" stroke="white"/>
+                        <path d="M11 4L5.35294 10L3 7.5" stroke="white" stroke-width="1.06863" stroke-miterlimit="10"/>
+                    </svg>
+                    <span class="le-footer-subscribe__agreement-text">Я даю согласие на обработку моих персональных данныхи ознакомлен (а) с политикой конфиденцильности.</span>
+                </label>
+            </form>
+            <div class="le-footer-row">
+                <div class="le-footer-contacts">
+                    <div class="le-footer-contacts-col">
+                        <div class="le-footer-contacts__item">{{ widget_settings.address_text | default: 'МАЛАЯ НИКИТСКАЯ 8/1' }}</div>
+                        <div class="le-footer-contacts__email">
+                            <a href="tel:{{ widget_settings.phone_text | default: '+7 916 272-51-38' | replace: ' ', '' | replace: '-', '' }}" class="le-footer-contacts__item">{{ widget_settings.phone_text | default: '+7 916 272-51-38' }}</a>
+                            <a href="mailto:{{ widget_settings.email_text | default: 'LEVASHOVA-ELAGINA@YANDEX.RU' }}" class="le-footer-contacts__item">{{ widget_settings.email_text | default: 'LEVASHOVA-ELAGINA@YANDEX.RU' }}</a>
+                        </div>
+                    </div>
+                    <div class="le-footer-contacts-col">
+                        <div class="le-footer-contacts__item">{{ widget_settings.hours_text | default: 'Пн-Вс: 11 — 22' }}</div>
+                        <a href="/" class="le-footer-contacts__social">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.70484 0H21.2952C22.5419 0.00350655 23.7365 0.50032 24.6181 1.38189C25.4997 2.26346 25.9965 3.45812 26 4.70484V21.2952C25.9966 22.5419 25.4998 23.7366 24.6182 24.6182C23.7366 25.4998 22.5419 25.9966 21.2952 26H4.70484C3.45807 25.9966 2.26333 25.4999 1.38172 24.6183C0.50012 23.7367 0.00335483 22.5419 0 21.2952V4.70484C0.0034307 3.4581 0.50022 2.26339 1.38181 1.38181C2.26339 0.50022 3.4581 0.0034307 4.70484 0ZM21.4769 3.47851C21.1256 3.47851 20.7823 3.58267 20.4903 3.77781C20.1982 3.97295 19.9706 4.25031 19.8362 4.57481C19.7018 4.89931 19.6667 5.25638 19.7352 5.60086C19.8038 5.94534 19.9729 6.26175 20.2213 6.51009C20.4697 6.75843 20.7861 6.92754 21.1306 6.99603C21.4751 7.06451 21.8322 7.0293 22.1566 6.89485C22.4811 6.7604 22.7584 6.53275 22.9535 6.24068C23.1486 5.94862 23.2527 5.60526 23.2527 5.25402C23.2527 5.02083 23.2067 4.78993 23.1175 4.5745C23.0282 4.35906 22.8974 4.16332 22.7325 3.99844C22.5676 3.83357 22.3719 3.70279 22.1564 3.61358C21.941 3.52437 21.7101 3.47847 21.4769 3.47851ZM22.2774 4.4538C22.1191 4.29551 21.9174 4.18772 21.6978 4.14405C21.4783 4.10038 21.2507 4.12279 21.0439 4.20846C20.8371 4.29413 20.6603 4.43921 20.5359 4.62534C20.4116 4.81147 20.3452 5.03031 20.3452 5.25417C20.3452 5.47803 20.4116 5.69686 20.5359 5.88299C20.6603 6.06913 20.8371 6.2142 21.0439 6.29987C21.2507 6.38554 21.4783 6.40796 21.6978 6.36429C21.9174 6.32062 22.1191 6.21282 22.2774 6.05453C22.4894 5.84212 22.6084 5.55427 22.6084 5.25417C22.6084 4.95406 22.4894 4.66622 22.2774 4.4538ZM13.2239 5.65182C11.7262 5.65182 10.2622 6.09594 9.01688 6.92801C7.77161 7.76009 6.80104 8.94275 6.22792 10.3264C5.65479 11.7101 5.50485 13.2327 5.79706 14.7016C6.08926 16.1705 6.81049 17.5197 7.86953 18.5787C8.92857 19.6377 10.2779 20.3589 11.7468 20.6511C13.2157 20.9432 14.7382 20.7932 16.1219 20.22C17.5056 19.6469 18.6882 18.6763 19.5202 17.4309C20.3522 16.1856 20.7963 14.7216 20.7962 13.2239C20.7962 12.2295 20.6004 11.2448 20.2198 10.3261C19.8393 9.40741 19.2815 8.57266 18.5783 7.86953C17.8752 7.16639 17.0404 6.60864 16.1217 6.22813C15.203 5.84761 14.2183 5.65178 13.2239 5.65182ZM18.1232 8.32491C17.1542 7.35595 15.9197 6.69608 14.5757 6.42874C13.2317 6.1614 11.8386 6.29861 10.5726 6.823C9.30662 7.3474 8.22455 8.23543 7.46324 9.37481C6.70193 10.5142 6.29559 11.8537 6.29559 13.224C6.29559 14.5943 6.70193 15.9339 7.46324 17.0733C8.22455 18.2126 9.30662 19.1007 10.5726 19.6251C11.8386 20.1495 13.2317 20.2867 14.5757 20.0193C15.9197 19.752 17.1542 19.0921 18.1232 18.1232C19.4225 16.8238 20.1524 15.0616 20.1524 13.224C20.1524 11.3865 19.4225 9.62424 18.1232 8.32491ZM21.2952 0.643933H4.70484C3.62883 0.64721 2.59783 1.07611 1.83697 1.83697C1.07611 2.59783 0.64721 3.62883 0.643933 4.70484V21.2952C0.64721 22.3712 1.07611 23.4022 1.83697 24.163C2.59783 24.9239 3.62883 25.3528 4.70484 25.3561H21.2952C22.3712 25.3528 23.4022 24.9239 24.163 24.163C24.9239 23.4022 25.3528 22.3712 25.3561 21.2952V4.70484C25.3528 3.62883 24.9239 2.59783 24.163 1.83697C23.4022 1.07611 22.3712 0.64721 21.2952 0.643933Z" fill="white"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="le-footer-bottom-row">
+                    <div class="le-footer-nav">
+                        <div class="le-footer-nav-col">
+                            {% for link in linklists.footer-1.links %}
+                                <a href="{{ link.url }}" class="le-footer-nav-item">{{ link.title }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="le-footer-nav-col">
+                            {% for link in linklists.footer-2.links %}
+                                <a href="{{ link.url }}" class="le-footer-nav-item">{{ link.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="le-footer-payments">
+                        <div class="le-footer-payments-title">Способы оплаты:</div>
+                        <div class="le-footer-payments-list">
+                            <img src="{{ 'MasterCard.svg' | asset_url }}" alt="" class="le-footer-payments-item">
+                            <img src="{{ 'Visa.svg' | asset_url }}" alt="" class="le-footer-payments-item">
+                            <img src="{{ 'Mir.svg' | asset_url }}" alt="" class="le-footer-payments-item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
