@@ -1,0 +1,189 @@
+$XS: "min-width: 360px";
+$S: "min-width: 480px";
+$M: "min-width: 720px";
+$L: "min-width: 960px";
+$XL: "min-width: 1200px";
+$XXL: "min-width: 1440px";
+$XXXL: "min-width: 1920px";
+
+.le-brand {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  
+    @media ($M) {
+      padding-top: 60px;
+      padding-bottom: 100px;
+    }
+  
+    @media ($L) {
+      padding-top: 60px;
+      padding-bottom: 100px;
+    }
+  
+    @media ($XL) {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  
+    @media ($XXL) {
+      padding-top: 100px;
+    }
+  }
+  
+  
+  .le-brand-inner {
+    display: flex;
+    flex-direction: column;
+  
+    @media ($M) {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  
+    @media ($L) {
+  
+    }
+  
+    @media ($XL) {
+  
+    }
+  
+    @media ($XXL) {
+  
+    }
+  }
+
+  .le-brand__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .le-brand__image-wrapper {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: .8;
+  }
+
+  .le-brand__title {
+    color: var(--Black, #000);
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Helvetica Neue";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 25px */
+    text-transform: uppercase;
+  
+    @media ($M) {
+      width: 307px;
+      margin-left: auto;
+    }
+  
+    @media ($L) {
+      width: 430px;
+    }
+  
+    @media ($XL) {
+      width: 547px;
+          font-size: 62px;
+    }
+  
+    @media ($XXL) {
+      width: 555px;
+    }
+  }
+
+  .le-brand__text {
+    leading-trim: both;
+    text-edge: cap;
+    
+    /* Текст_2 */
+    font-family: "Helvetica Neue";
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 110%; /* 17.6px */
+    letter-spacing: -0.32px;
+
+    width: 100%;
+  
+    @media ($M) {
+      width: 255px;
+      margin-bottom: 0;
+    }
+  
+    @media ($L) {
+      width: 355px;
+    }
+  
+    @media ($XL) {
+      width: 453px;
+    }
+  
+    @media ($XXL) {
+      width: 671px;
+    }
+
+    & a {
+      color: var(--Green, #62C554);
+    }
+
+    & p:last-child {
+      margin-bottom: 0;
+    }
+
+    & b {
+        font-weight: 400;
+    }
+
+
+  }
+  
+  .le-brand-col1 {
+    width: 100%;
+    margin-bottom: 30px;
+  
+    @media ($M) {
+      width: 255px;
+      margin-bottom: 0;
+    }
+  
+    @media ($L) {
+      width: 355px;
+    }
+  
+    @media ($XL) {
+      width: 453px;
+    }
+  
+    @media ($XXL) {
+      width: 671px;
+    }
+  }
+  
+  .le-brand-col2 {
+    width: 100%;
+  
+    @media ($M) {
+      padding-top: 8px;
+      width: 307px;
+    }
+  
+    @media ($L) {
+      width: 430px;
+    }
+  
+    @media ($XL) {
+      padding-top: 15px;
+      width: 547px;
+    }
+  
+    @media ($XXL) {
+      padding-top: 0;
+      width: 555px;
+    }
+  }
+  

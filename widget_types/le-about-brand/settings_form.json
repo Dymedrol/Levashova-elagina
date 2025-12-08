@@ -3,6 +3,20 @@
     {
       "items": [
         {
+          "name": "image",
+          "label": "Изображение",
+          "type": "file",
+          "value": "",
+          "clearable": true,
+          "enable_server_reload": true
+        },
+        {
+          "name": "title",
+          "label": "Текст",
+          "type": "text",
+          "value": ""
+        },
+        {
           "name": "text",
           "label": "Текст",
           "type": "rich-text",

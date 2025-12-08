@@ -1,29 +1,37 @@
-<div class="container">
-    <div class="le-breadcrumbs le-structure-breadcrumbs">
-        <a href="/" class="le-breadcrumbs__item">магазин</a>
-        <div href="/" class="le-breadcrumbs__item">/</div>
-        <a href="/" class="le-breadcrumbs__item">украшения</a>
-        <div href="/" class="le-breadcrumbs__item">/</div>
-        <a href="/" class="le-breadcrumbs__item">кольца</a>
-    </div>
-    <div class="le-structure-inner">
-        <div class="le-structure__title-wrapper">
-            <h1 class="le-structure__title">гарантия<br>на товар</h1>
+<main class="le-structure">
+    <div class="container">
+        <div class="le-breadcrumbs le-structure-breadcrumbs">
+            <a href="/" class="le-breadcrumbs__item">главная</a>
+            <div href="/" class="le-breadcrumbs__item">/</div>
+            <a href="{{ page.url }}" class="le-breadcrumbs__item">{{ page.title }}</a>
+            <div href="/" class="le-breadcrumbs__item">/</div>
+            <div class="le-breadcrumbs__item" id="breadcrumbs-block-name">{{ data.blocks[0].tab-name }}</div>
         </div>
-        <div class="le-structure-col1">
-            <div class="le-structure-sections">
-                <div class="le-structure-section le-structure-section_active">украшения и одежда</div>
-                <div class="le-structure-section">другое</div>
+        <div class="le-structure-inner">
+            <div class="le-structure__title-wrapper">
+                {% if widget_settings.text %}
+                    <div class="le-structure__text">{{ widget_settings.text }}</div>
+                {% endif %}
+                <h1 class="le-structure__title">{{ page.title }}</h1>
+            </div>
+            <div class="le-structure-col1">
+                <div class="le-structure-sections">
+                    {% for block in data.blocks %}
+                        <div class="le-structure-section{% if forloop.first %} le-structure-section_active{% endif %}" 
+                             data-tab-index="{{ forloop.index0 }}">
+                            {{ block.tab-name }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="le-structure-col2">
+                {% for block in data.blocks %}
+                    <div class="le-structure-content{% unless forloop.first %} le-structure-content_hidden{% endunless %}" 
+                         data-content-index="{{ forloop.index0 }}">
+                        {{ block.tab-content }}
+                    </div>
+                {% endfor %}
             </div>
         </div>
-        <div class="le-structure-col2">
-            <div class="le-structure-content">
-                <h3>украшения</h3>
-                <p>Гарантийный срок — 3 месяца с момента получения  ювелирного изделия.</p>
-                <p></p>
-                <h3>одежда</h3>
-                <p>Гарантия на изделие составляет 3 месяца с момента  получения Заказа (включая день покупки Товара).</p>
-            </div>
-        </div>
     </div>
-</div>
+</main>

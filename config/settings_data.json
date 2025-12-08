@@ -41,7 +41,11 @@
       "heading-ratio": 1.5,
       "heading-weight": 600,
       "color-preset": "custom",
-      "_settings_version": 1753182128.4149227
+      "_settings_version": 1764852086.404456,
+      "sidebar_page.system-template-e53aa776320e505afdc1_position": "left",
+      "sidebar_page.system-template-509799d215b26cfad3f4_position": "left",
+      "sidebar_page.system-template-69286d28dd0355b460b1_position": "left",
+      "sidebar_page.system-template-51f41980be0e1cbea56c_position": "left"
     }
   },
   "remote_theme_id": 653,

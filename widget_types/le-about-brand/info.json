@@ -1,0 +1,22 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "LE ABOUT BRAND"
+  },
+  "handle": "le-about-brand",
+  "description": {
+    "ru": "LE ABOUT BRAND"
+  },
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "content"
+  ],
+  "generation": 4,
+  "widget_category_handle": "drugie",
+  "libraries": [
+    "commonjs_v2",
+    "my-layout"
+  ]
+}

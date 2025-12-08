@@ -1,0 +1,15 @@
+<section class="le-brand">
+    <div class="container">
+        <div class="le-brand-inner">
+            <div class="le-brand-col1">
+                <div class="le-brand__image-wrapper">
+                    <img loading="lazy" class="le-brand__image" src="{{ widget_settings.image | image_url: 1000, format: 'webp', resizing_type: 'fit_width' }}" alt="{{ widget_settings.title }}">
+                </div>
+            </div>
+            <div class="le-brand-col2">
+                <h2 class="le-brand__title">{{ widget_settings.title }}</h2>
+                <div class="le-brand__text">{{ widget_settings.text }}</div>
+            </div>
+        </div>
+    </div>
+</section>

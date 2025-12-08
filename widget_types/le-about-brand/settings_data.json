@@ -7,5 +7,8 @@
   "hide-mobile":false,
   "hide-desktop":false,
   "menu_handle":"main-menu",
-  "align-text":"left"
+  "align-text":"left",
+  "title": "Заголовок",
+  "text": "Текст",
+  "image": ""
 }
