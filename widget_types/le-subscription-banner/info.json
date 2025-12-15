@@ -1,0 +1,22 @@
+{
+  "type": "SimpleWidgetType",
+  "name": {
+    "ru": "LE  Баннер с подпиской на рассылку"
+  },
+  "handle": "le-subscription-banner",
+  "description": {
+    "ru": "LE  Баннер с подпиской на рассылку"
+  },
+  "page_kinds": [
+    "all"
+  ],
+  "widget_list_kinds": [
+    "content"
+  ],
+  "generation": 4,
+  "widget_category_handle": "banner",
+  "libraries": [
+    "commonjs_v2",
+    "my-layout"
+  ]
+}

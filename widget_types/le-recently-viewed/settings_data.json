@@ -1,0 +1,18 @@
+{
+  "layout-wide-bg": false,
+  "layout-wide-content": false,
+  "layout-pt": 3,
+  "layout-pb": 3,
+  "hide-mobile": false,
+  "hide-desktop": false,
+  "img-ratio": 1,
+  "slide-width": 280,
+  "slide-gap": 30,
+  "img-fit": "contain",
+  "title": {
+    "ru": "недавно просмотренные",
+    "en": "Previously viewed",
+    "ua": "Раніше переглянуті",
+    "es": "Visto anteriormente"
+  }
+}

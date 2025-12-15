@@ -1,0 +1,10 @@
+<div class="viewed-products">
+  <div class="special-products js-special-products">
+    <div class="special-products__head">
+      {% if widget_settings.title and widget_settings.title != ''  %}
+        <div class="special-products__title">{{ widget_settings.title | editable }}</div>
+      {% endif %}
+    </div>
+    <div class="special-products__list"></div>
+  </div>
+</div>

@@ -12,7 +12,7 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
 
 .le-shop {
     padding-top: 60px;
-    min-height: 100vh; //temp
+    min-height: 50vh; //temp
   
     @media ($M) {
       padding-top: 60px;
@@ -427,6 +427,26 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
       font-size: 16px;
       line-height: 100%; /* 16px */
       bottom: -48px;
+    }
+  }
+
+  .le-shop-product__icon-button {
+    display: none;
+    position: absolute;
+    top: 26px;
+    right: 23px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .le-shop-product__icon-button.favorites-added svg path {
+    fill: var(--Black, #000);
+  }
+
+  .le-shop-product:hover .le-shop-product__icon-button {
+    @media ($XL) {
+      display: block;
     }
   }
   

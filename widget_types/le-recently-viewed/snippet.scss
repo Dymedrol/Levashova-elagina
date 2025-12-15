@@ -1,0 +1,181 @@
+@include background-color(--bg);
+
+&.is-empty-viewed_products {
+  display: none;
+}
+
+.special-products {
+  border-top: 1px solid #E6E6E6;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &__head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @media screen and (min-width: 720px) {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 960px) {
+      overflow-x: visible;
+    }
+  }
+}
+
+.special-products__title {
+  font-family: 'Helvetica Neue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.le-shop-product {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 0;
+  width: calc(50% - 10px);
+  aspect-ratio: 1;
+  background-color: var(--Grey, #F6F6F6);
+  text-decoration: none;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 720px) {
+    width: 200px;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 960px) {
+    width: calc(25% - 15px);
+    max-width: 278px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: calc(25% - 15px);
+    max-width: 360px;
+    height: 343px;
+    aspect-ratio: unset;
+    background-color: transparent;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: calc(25% - 15px);
+    max-width: 440px;
+    height: 420px;
+  }
+
+  &:hover {
+    @media screen and (min-width: 1200px) {
+      background-color: var(--Grey, #F6F6F6);
+    }
+  }
+}
+
+.le-shop-product__pic {
+  width: 135px;
+  aspect-ratio: 1;
+  object-fit: cover;
+
+  @media screen and (min-width: 720px) {
+    width: 85%;
+  }
+}
+
+.le-shop-product__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  margin: auto;
+  max-width: 85%;
+
+  color: #000;
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 1200px) {
+    display: none;
+    bottom: -26px;
+    max-width: 100%;
+
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 100%;
+    leading-trim: both;
+    text-edge: cap;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #000000;
+  }
+}
+
+.le-shop-product__price {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -24px;
+  margin: auto;
+
+  color: #000;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "Helvetica Neue";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.24px;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 1200px) {
+    display: none;
+    font-size: 16px;
+    line-height: 100%;
+    bottom: -48px;
+  }
+}
+
+.le-shop-product:hover .le-shop-product__title {
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.le-shop-product:hover .le-shop-product__price {
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
+}

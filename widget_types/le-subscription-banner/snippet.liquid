@@ -1,0 +1,55 @@
+<div class="subscription-banner">
+  <div class="subscription-banner__container container">
+    <div class="subscription-banner__content">
+      <div class="subscription-banner__text">
+        <h2 class="subscription-banner__title">{{ widget_settings.title }}</h2>
+        <p class="subscription-banner__subtitle">{{ widget_settings.subtitle }}</p>
+        
+        <form class="subscription-banner__form js-subscription-form" method="post" action="/subscription">
+          <div class="subscription-banner__field">
+            <label class="subscription-banner__label" for="subscription-email">E-MAIL</label>
+            <input 
+              type="email" 
+              id="subscription-email" 
+              name="email" 
+              class="subscription-banner__input" 
+              required
+              placeholder="E_MAIL"
+            >
+          </div>
+          
+          <button type="submit" class="subscription-banner__button">
+            ПОДПИСАТЬСЯ
+          </button>
+          
+          <div class="subscription-banner__consent">
+            <input 
+              type="checkbox" 
+              id="subscription-consent" 
+              name="consent" 
+              class="subscription-banner__checkbox" 
+              required
+              checked
+            >
+            <label for="subscription-consent" class="subscription-banner__consent-label">
+              Я даю согласие на обработку моих персональных данных и ознакомлен (а) с политикой конфиденциальности.
+            </label>
+          </div>
+        </form>
+      </div>
+      
+      <div class="subscription-banner__image">
+        {% if widget_settings.image_url and widget_settings.image_url != '' %}
+          <img 
+            src="{{ widget_settings.image_url | image_url: 1000, format: 'webp', resizing_type: 'fit_width' }}" 
+            alt="Subscription banner" 
+            class="subscription-banner__img"
+          >
+        {% else %}
+          <div class="subscription-banner__placeholder"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
