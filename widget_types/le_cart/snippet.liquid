@@ -31,14 +31,18 @@
                         <div class="le-cart-item__quantity">
                             <span data-cart-item-count></span> товара
                         </div>
+                        {% assign is_package_in_cart = false %}
                         {% for item in cart.items %}
-                            <div class="le-cart-item__product" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
-                                <span class="le-cart-item__product-delete" data-item-delete="{{ item.id }}">X</span>
-                                <div data-quantity style="display: none;">
+                            {% if item.product.id == widget_settings.package-product-id.id %}
+                                {% assign is_package_in_cart = true %}
+                            {% endif %}
+                            <div class="le-cart-item__product" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}" data-product-updated-at="{{ item.product.updated_at }}">
+                                <div data-quantity data-quantity-change-init="true" style="display: none;">
                                     <input type="text" name="cart[quantity][{{ item.id }}]" value="{{ item.quantity }}">
                                     <span data-quantity-change="-1">-</span>
                                     <span data-quantity-change="1">+</span>
                                 </div>
+                                <button class="le-cart-item__product-delete js-item-delete" data-item-delete="{{ item.id }}" type="submit">X</button>
                                 <div class="le-cart-item__product-info">
                                     <img src="{{ item.product.first_image.thumb_url  }}" alt="{{ item.title }}" class="le-cart-item__product-info-pic">
                                     <div class="le-cart-item__product-info-title-wrapper">
@@ -49,9 +53,20 @@
                                 <div class="le-cart-item__product-options-wrapper">
                                     <div class="le-cart-item__product-options">
                                         {% for option in item.variant.option_values  %}
-                                        <div class="le-cart-item__product-option {% if option.option_name.title == "Цвет" %}le-cart-item__product-option__color le-cart-item__product-option__color_{{ option.title }}{% endif %}">{% if option.option_name.title == "Цвет" %}<span></span>{% else %}{{ option.title }}{% endif %}</div>
+                                            <div class="le-cart-item__product-option {% if option.option_name.title == "Цвет" %}le-cart-item__product-option__color le-cart-item__product-option__color_{{ option.title }}{% endif %}">{% if option.option_name.title == "Цвет" %}<span></span>{% else %}{{ option.title }}{% endif %}</div>
                                         {% endfor %}
-                                        {% comment %}<div class="le-cart-item__product-option">гравировка</div> {% endcomment %}
+
+                                        {% if item.accessory_lines.size > 0 %}
+                                            <div class="le-cart-item__product-option" data-item-accessories>
+                                                {% for accessory in item.accessory_lines %}
+                                                    {% if accessory.accessory_value_name == 'Добавить гравировку' %}
+                                                        <span data-item-accessory-value-id="{{ accessory.accessory_value_id }}">гравировка</span>
+                                                        <span class="le-cart-item__product-option-subline">{{ item.comment | remove: "Текст гравировки: " }}</span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+    
                                     </div>
                                     <div class="le-cart-item__product-options-price">{{ item.total_price | money }}</div>
                                 </div>
@@ -60,24 +75,40 @@
                     </div>
                     <div class="le-cart-item__col">
                         <div class="le-cart-total">
-                            <div class="le-cart-total-item" style="display: none;">
-                                <div class="le-cart-total-item__title">подарочная<br>упаковка</div>
-                                <div class="le-cart-total-item__gift-wrapper">
-                                    <div class="le-cart-total-item__gift">+ 2 000 ₽</div>
-                                    <a href="/" class="le-cart-total-item__gift-link">посмотреть<br>упаковку</a>
+                            {% if widget_settings.package-product-id and is_package_in_cart != true %}
+                                <div class="le-cart-total-item">
+                                    <div class="le-cart-total-item__title">подарочная<br>упаковка</div>
+                                    <div class="le-cart-total-item__gift-wrapper">
+                                        <button  
+                                            class="le-cart-total-item__gift" 
+                                            id="package-product-id-button"
+                                            data-package-product-id="{{ widget_settings.package-product-id.variants.first.id }}"
+                                        >
+                                            + {{ widget_settings.package-product-id.price | money }}
+                                        </button>
+                                        <a href="/" class="le-cart-total-item__gift-link" style="display: none;">посмотреть<br>упаковку</a>
+                                    </div>
                                 </div>
-                            </div>
+                            {% endif %}
+
                             <div class="le-cart-total-item">
                                 <div class="le-cart-total-item__title">общая<br>сумма</div>
-                                <div class="le-cart-total-item__pre-price" data-cart-total-price></div>
+                                <div class="le-cart-total-item__pre-price" data-cart-full-total-price></div>
                             </div>
                             <div class="le-cart-total-item">
                                 <div class="le-cart-total-item__title">общая<br>с учетом<br>скидки</div>
-                                <div class="le-cart-total-item__total-price" data-cart-full-total-price></div>
+                                <div class="le-cart-total-item__total-price" data-cart-total-price>
+                                </div>
                             </div>
                         </div>
 
-                        <input class="le-cart-submit" type="submit" value="перейти к оформлению" data-cart-submit>
+                        <div class="le-cart-promo">
+                            <div class="le-cart-promo__title">промокод</div>
+                            <input class="le-cart-promo__input" type="text" name="cart[coupon]" value="{{ cart.coupon }}" />
+                            <input type="button" value="Применить" data-coupon-submit/ style="display: none;">
+                        </div>
+
+                        <input class="le-cart-submit" type="submit" value="перейти к оформлению" data-cart-submit {% if cart.items.size == 0 %}disabled{% endif %}>
                     </div>
                 </div>
             </form>
