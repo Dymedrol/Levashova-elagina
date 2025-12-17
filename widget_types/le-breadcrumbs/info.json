@@ -1,7 +1,7 @@
 {
   "type": "SimpleWidgetType",
   "name": {
-    "ru": "Хлебный крошки"
+    "ru": "LE Хлебный крошки"
   },
   "handle": "le-breadcrumbs",
   "description": {

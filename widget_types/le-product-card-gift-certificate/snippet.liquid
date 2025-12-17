@@ -71,7 +71,7 @@
               <span data-quantity-change="1" style="display: none;">+</span>
             </div>
           
-            <button type="submit" data-item-add class="le-product-form__submit">
+            <button type="submit" data-item-add class="le-product-form__submit" disabled>
               Добавить в корзину
             </button>
           
@@ -81,33 +81,17 @@
         {% endif %}
 
         <div class="le-product-accordion">
-          <div class="le-product-accordion__item">
-            <div class="le-product-accordion__item-header">
-              ДЕТАЛИ
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="26" viewBox="0 0 16 26" fill="none">
-                <path d="M2 10.5L8 16.5L14 10.5" stroke="black"/>
-              </svg>
+          {% if product.fields.Detali.value != '' %}
+            <div class="le-product-accordion__item">
+              <div class="le-product-accordion__item-header">
+                {{ product.fields.Detali.title }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="26" viewBox="0 0 16 26" fill="none">
+                  <path d="M2 10.5L8 16.5L14 10.5" stroke="black"/>
+                </svg>
+              </div>
+              <div class="le-product-accordion__item-content">{{ product.fields.Detali.value }}</div>
             </div>
-            <div class="le-product-accordion__item-content">Кольцо из серебра 925 пробы с фианитами.</div>
-          </div>
-          <div class="le-product-accordion__item">
-            <div class="le-product-accordion__item-header">
-              что включено
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="26" viewBox="0 0 16 26" fill="none">
-                <path d="M2 10.5L8 16.5L14 10.5" stroke="black"/>
-              </svg>
-            </div>
-            <div class="le-product-accordion__item-content">Кольцо из серебра 925 пробы с фианитами.</div>
-          </div>
-          <div class="le-product-accordion__item">
-            <div class="le-product-accordion__item-header">
-              наличие в магазине и доставка
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="26" viewBox="0 0 16 26" fill="none">
-                <path d="M2 10.5L8 16.5L14 10.5" stroke="black"/>
-              </svg>
-            </div>
-            <div class="le-product-accordion__item-content">Кольцо из серебра 925 пробы с фианитами.</div>
-          </div>
+          {% endif %}
         </div>
       </div>
     </div>

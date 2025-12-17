@@ -22,4 +22,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.le-product-accordion__item-content').forEach(function(content) {
       content.style.maxHeight = null;
     });
+
+    // Управление disabled состоянием кнопки в зависимости от поля comment
+    var commentInput = document.querySelector('input[name="comment"]');
+    var submitButton = document.querySelector('.le-product-form__submit');
+    
+    if (commentInput && submitButton) {
+      // Функция для проверки и обновления состояния кнопки
+      function updateSubmitButtonState() {
+        if (commentInput.value.trim() === '') {
+          submitButton.disabled = true;
+        } else {
+          submitButton.disabled = false;
+        }
+      }
+      
+      // Проверка при загрузке страницы
+      updateSubmitButtonState();
+      
+      // Отслеживание изменений в поле
+      commentInput.addEventListener('input', updateSubmitButtonState);
+      commentInput.addEventListener('change', updateSubmitButtonState);
+    }
 });
