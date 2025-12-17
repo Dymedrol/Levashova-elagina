@@ -1,11 +1,11 @@
 {
   "type": "SimpleWidgetType",
   "name": {
-    "ru": "LE Карточка товара"
+    "ru": "LE Карточка товара для подарочного сертификата"
   },
-  "handle": "le-product-card",
+  "handle": "le-product-card-gift-certificate",
   "description": {
-    "ru": "Карточка товара"
+    "ru": "LE Карточка товара для подарочного сертификата"
   },
   "page_kinds": [
     "product"
@@ -16,12 +16,7 @@
   "generation": 4,
   "widget_category_handle": "products-cards",
   "libraries": [
-    "micromodal",
-    "jquery",
     "commonjs_v2",
-    "fslightbox",
-    "splide",
-    "splide3",
     "my-layout"
   ]
 }

@@ -50,28 +50,45 @@
             {% endif %}
           </div>
         </div>
-        <form id="add-to-cart-form" action="/cart_items" method="post" class="le-product-form">
-          <input type="hidden" name="product_id" value="{{ product.id }}">
-          <input type="hidden" name="variant_id" id="variant_id" value="{{ product.variants.first.id }}">
 
-          {% for option in product.options %}
-            <div class="le-product-form-item product-option-group" data-option-index="{{ forloop.index0 }}">
-              <div class="le-product-form-item__title">
-                {{ option.title }}
+        {% if product.available %}
+          <form id="add-to-cart-form" action="/cart_items" method="post" class="le-product-form">
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <input type="hidden" name="variant_id" id="variant_id" value="{{ product.variants.first.id }}">
+
+            {% for option in product.options %}
+              <div class="le-product-form-item product-option-group" data-option-index="{{ forloop.index0 }}">
+                <div class="le-product-form-item__title">
+                  {{ option.title }}
+                </div>
+                <div class="le-product-form-item-controls">
+                  {% for value in option.values %}
+                    <button type="button" class="le-product-form-item-controls__button product-option-btn" data-value="{{ value.title | escape | strip }}" data-option-index="{{ forloop.parentloop.index0 }}">
+                      {{ value.title }}{% if option.title == 'Цвет' %} <span class="le-product-form-item-controls__button_color {{ value.title }}"></span>{% endif %}
+                    </button>
+                  {% endfor %}
+                </div>
               </div>
-              <div class="le-product-form-item-controls">
-                {% for value in option.values %}
-                  <button type="button" class="le-product-form-item-controls__button product-option-btn" data-value="{{ value.title | escape | strip }}" data-option-index="{{ forloop.parentloop.index0 }}">
-                    {{ value.title }}{% if option.title == 'Цвет' %} <span class="le-product-form-item-controls__button_color {{ value.title }}"></span>{% endif %}
-                  </button>
-                {% endfor %}
-              </div>
+            {% endfor %}
+            <div class="le-product-form-item">
+              <button type="submit" id="buy-btn" class="le-product-form__submit">Добавить в корзину</button>
             </div>
-          {% endfor %}
-          <div class="le-product-form-item">
-            <button type="submit" id="buy-btn" class="le-product-form__submit">Добавить в корзину</button>
+          </form>
+        {% else %}
+          <div class="le-product-notice">
+            <div class="le-product-notice__field">
+              <input
+                type="email"
+                class="le-product-notice__input"
+                placeholder="введите вашу почту"
+              >
+            </div>
+            <button type="button" class="le-product-notice__button">
+              сообщить о поступлении
+            </button>
           </div>
-        </form>
+        {% endif %}
+
         <div class="le-product-accordion">
           <div class="le-product-accordion__item">
             <div class="le-product-accordion__item-header">

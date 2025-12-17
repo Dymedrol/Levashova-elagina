@@ -1638,3 +1638,61 @@ video {
 .hide-all-buttons .bnpl-button-container {
   display: none;
 }
+
+/* LE PRODUCT NOT AVAILABLE NOTICE */
+.le-product-notice {
+  max-width: 555px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  &__field,
+  &__button {
+    height: 50px;
+  }
+
+  &__field {
+    background: #f6f6f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: rgba(0, 0, 0, 0.4);
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  &__button {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

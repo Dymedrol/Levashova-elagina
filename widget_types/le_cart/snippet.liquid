@@ -22,79 +22,66 @@
                     </div>
                 </div>
             </div>
-            <div class="le-cart-inner">
-                <div class="le-cart-item__col">
-                    <div class="le-cart-item__quantity">
-                        <span data-cart-item-count></span> товара
-                    </div>
-                    {% for item in cart.items %}
-                        <div class="le-cart-item__product">
-                            <div class="le-cart-item__product-info">
-                                <img src="{{ item.product.first_image.thumb_url  }}" alt="{{ item.title }}" class="le-cart-item__product-info-pic">
-                                <div class="le-cart-item__product-info-title-wrapper">
-                                    <div class="le-cart-item__product-info-title">{{ item.product.title }}</div>
-                                    <div class="le-cart-item__product-info-price">{{ item.total_price | money }}</div>
+
+            <form action="{{ cart_url }}" method="post" data-cart-form>
+                <input type="hidden" name="_method" value="put">
+                <input type="hidden" name="make_order" value="">
+                <div class="le-cart-inner">
+                    <div class="le-cart-item__col">
+                        <div class="le-cart-item__quantity">
+                            <span data-cart-item-count></span> товара
+                        </div>
+                        {% for item in cart.items %}
+                            <div class="le-cart-item__product" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
+                                <span class="le-cart-item__product-delete" data-item-delete="{{ item.id }}">X</span>
+                                <div data-quantity style="display: none;">
+                                    <input type="text" name="cart[quantity][{{ item.id }}]" value="{{ item.quantity }}">
+                                    <span data-quantity-change="-1">-</span>
+                                    <span data-quantity-change="1">+</span>
+                                </div>
+                                <div class="le-cart-item__product-info">
+                                    <img src="{{ item.product.first_image.thumb_url  }}" alt="{{ item.title }}" class="le-cart-item__product-info-pic">
+                                    <div class="le-cart-item__product-info-title-wrapper">
+                                        <div class="le-cart-item__product-info-title">{{ item.product.title }}</div>
+                                        <div class="le-cart-item__product-info-price">{{ item.total_price | money }}</div>
+                                    </div>
+                                </div>
+                                <div class="le-cart-item__product-options-wrapper">
+                                    <div class="le-cart-item__product-options">
+                                        {% for option in item.variant.option_values  %}
+                                        <div class="le-cart-item__product-option {% if option.option_name.title == "Цвет" %}le-cart-item__product-option__color le-cart-item__product-option__color_{{ option.title }}{% endif %}">{% if option.option_name.title == "Цвет" %}<span></span>{% else %}{{ option.title }}{% endif %}</div>
+                                        {% endfor %}
+                                        {% comment %}<div class="le-cart-item__product-option">гравировка</div> {% endcomment %}
+                                    </div>
+                                    <div class="le-cart-item__product-options-price">{{ item.total_price | money }}</div>
                                 </div>
                             </div>
-                            <div class="le-cart-item__product-options-wrapper">
-                                <div class="le-cart-item__product-options">
-                                    {% for option in item.variant.option_values  %}
-                                    <div class="le-cart-item__product-option {% if option.option_name.title == "Цвет" %}le-cart-item__product-option__color le-cart-item__product-option__color_{{ option.title }}{% endif %}">{% if option.option_name.title == "Цвет" %}<span></span>{% else %}{{ option.title }}{% endif %}</div>
-                                    {% endfor %}
-                                    {% comment %}<div class="le-cart-item__product-option">гравировка</div> {% endcomment %}
-                                </div>
-                                <div class="le-cart-item__product-options-price">{{ item.total_price | money }}</div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="le-cart-item__col">
-                    <div class="le-cart-total">
-                        <div class="le-cart-total-item" style="display: none;">
-                            <div class="le-cart-total-item__title">подарочная<br>упаковка</div>
-                            <div class="le-cart-total-item__gift-wrapper">
-                                <div class="le-cart-total-item__gift">+ 2 000 ₽</div>
-                                <a href="/" class="le-cart-total-item__gift-link">посмотреть<br>упаковку</a>
-                            </div>
-                        </div>
-                        <div class="le-cart-total-item">
-                            <div class="le-cart-total-item__title">общая<br>сумма</div>
-                            <div class="le-cart-total-item__pre-price" data-cart-total-price>{{ cart.items_price | money}}</div>
-                        </div>
-                        <div class="le-cart-total-item">
-                            <div class="le-cart-total-item__title">общая<br>с учетом<br>скидки</div>
-                            <div class="le-cart-total-item__total-price" data-cart-full-total-price>42 000 ₽</div>
-                        </div>
+                        {% endfor %}
                     </div>
-                    <a href="/" class="le-cart-submit">перейти к оформлению</a>
+                    <div class="le-cart-item__col">
+                        <div class="le-cart-total">
+                            <div class="le-cart-total-item" style="display: none;">
+                                <div class="le-cart-total-item__title">подарочная<br>упаковка</div>
+                                <div class="le-cart-total-item__gift-wrapper">
+                                    <div class="le-cart-total-item__gift">+ 2 000 ₽</div>
+                                    <a href="/" class="le-cart-total-item__gift-link">посмотреть<br>упаковку</a>
+                                </div>
+                            </div>
+                            <div class="le-cart-total-item">
+                                <div class="le-cart-total-item__title">общая<br>сумма</div>
+                                <div class="le-cart-total-item__pre-price" data-cart-total-price></div>
+                            </div>
+                            <div class="le-cart-total-item">
+                                <div class="le-cart-total-item__title">общая<br>с учетом<br>скидки</div>
+                                <div class="le-cart-total-item__total-price" data-cart-full-total-price></div>
+                            </div>
+                        </div>
+
+                        <input class="le-cart-submit" type="submit" value="перейти к оформлению" data-cart-submit>
+                    </div>
                 </div>
-            </div>
+            </form>
+
         </div>
     </div>
 </main>
-
-<form action="{{ cart_url }}" method="post" data-cart-form>
-  <input type="hidden" name="_method" value="put">
-  <input type="hidden" name="make_order" value="">
-
-  {% for item in cart.items %}
-    <div data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
-      <div data-quantity>
-        <input type="text" name="cart[quantity][{{ item.id }}]" value="{{ item.quantity }}">
-        <span data-quantity-change="-1">-</span>
-        <span data-quantity-change="1">+</span>
-      </div>
-      <span data-item-delete="{{ item.id }}">X</span>
-    </div>
-  {% endfor %}
-
-  <div>
-    <label> Купон </label>
-    <input type="text" name="cart[coupon]" value="{{ cart.coupon }}" />
-    <input type="button" value="Применить" data-coupon-submit/>
-  </div>
-
-  <input type="submit" value="Оформить" data-cart-submit>
-  <button data-cart-clear>Очистить</button>
-  <button data-cart-update>Обновить</button>
-</form>

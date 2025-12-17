@@ -469,4 +469,17 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
       display: block;
     }
   }
+
+  .le-shop-products-inner__empty-title {
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    leading-trim: both;
+    text-edge: cap;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #000000;
+  }
   

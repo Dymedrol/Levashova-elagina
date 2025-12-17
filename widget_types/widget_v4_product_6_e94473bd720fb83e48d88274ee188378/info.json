@@ -17,8 +17,8 @@
   "widget_category_handle": "products-cards",
   "libraries": [
     "micromodal",
-    "commonjs_v2",
     "jquery",
+    "commonjs_v2",
     "fslightbox",
     "splide",
     "splide3",

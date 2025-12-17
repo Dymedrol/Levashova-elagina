@@ -1,22 +1,21 @@
 {
   "type": "SimpleWidgetType",
   "name": {
-    "ru": "le_cart"
+    "ru": "LE Избранное"
   },
-  "handle": "le_cart",
+  "handle": "le-favorites",
   "description": {
-    "ru": "LE корзина"
+    "ru": "LE Избранное"
   },
   "page_kinds": [
-    "cart"
+    "favorite"
   ],
   "widget_list_kinds": [
     "content"
   ],
   "generation": 4,
-  "widget_category_handle": "cart",
+  "widget_category_handle": "favorites",
   "libraries": [
-    "jquery",
     "commonjs_v2",
     "my-layout"
   ]
