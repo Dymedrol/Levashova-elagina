@@ -52,11 +52,12 @@
         <div class="le-shop-controls-bottom-row">
             <form method="get">
                 <label class="le-shop-controls-bottom-row__item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none" class="le-checkbox-svg">
                         <rect x="0.5" y="0.75" width="13" height="13" stroke="black" stroke-opacity="0.4"/>
+                        <path d="M3 7.5L6 10.5L11 4.5" stroke="black" stroke-opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="le-checkbox-checkmark"/>
                     </svg>
                     <span class="le-shop-controls-bottom-row__item-text">В НАЛИЧИИ</span>
-                    <input onchange="this.form.submit()" type="checkbox" name="available" value="1" {% if params.available == '1' %}checked{% endif %}>
+                    <input type="checkbox" name="available" id="available">
                 </label>
                 <label class="le-shop-controls-bottom-row__item">
                     <span class="le-shop-controls-bottom-row__item-text">ДОРОЖЕ</span>

@@ -234,6 +234,15 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
     opacity: 0;
     position: absolute;
   }
+
+  .le-checkbox-checkmark {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .le-shop-controls-bottom-row__item:has(input:checked) .le-checkbox-checkmark {
+    opacity: 1;
+  }
   
   .le-shop-controls-bottom-row__item-text {
     color: var(--Black-transparent, rgba(0, 0, 0, 0.40));
