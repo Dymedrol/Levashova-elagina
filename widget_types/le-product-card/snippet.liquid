@@ -101,7 +101,7 @@
                       </div>
                       <div class="le-product-form-item-controls le-product-form-item-controls_engrave">
                           <div class="le-product-form-item-controls__button le-product-form-item-controls__button_engrave">+ <span id="product-accessory-price"></span></div>
-                          <input class="le-product-form-item-controls__input_engrave" type="text" name="engrave" id="engrave" placeholder="текст">
+                          <input maxlength="{{ widget_settings.max_engrave_length }}" class="le-product-form-item-controls__input_engrave" type="text" name="engrave" id="engrave" placeholder="текст">
                           <a href="{{ widget_settings.sizes_link }}" class="le-product-form-item-controls-link_engrave">правила гравировки</a>
                       </div>
                   </div>

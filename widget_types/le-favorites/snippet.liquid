@@ -1,36 +1,36 @@
 <section class="le-shop">
 
-    <div class="le-shop-products">
-        <div class="container">
+  <div class="le-shop-products">
+    <div class="container">
+      <div class="le-shop-products-inner__title">Избранное</div>
 
-            {% if products.size > 0 %}
-            <div class="le-shop-products-inner">
-                {%- for product in products %}
-                  <a href="{{ product.url }}" class="le-shop-product{% if is_available %} le-shop-product_available{% endif %}">
-                    <img src="{{ product.images.first.medium_url }}" alt="{{ product.title }}" class="le-shop-product__pic">
-                    <div class="le-shop-product__title">{{ product.title }}</div>
-                    <span class="le-shop-product__price">
-                      {% if product.variants.size > 0 %}
-                        {{ product.variants.first.price | money }}
-                      {% endif %}
-                    </span>
-                    <button class="le-shop-product__icon-button" data-ui-favorites-trigger="{{ product.id }}">
-                    <img src="{{ 'icon_heart.png' | asset_url }}" alt="heart" class="le-shop-product__icon">
-
-                    <img src="{{ 'icon_heart_filled.png' | asset_url }}" alt="heart" class="le-shop-product__icon_hover">
-                    </button>
-                  </a>
-                {%- endfor %}
-            </div>
-            {% else %}
-            <div class="le-shop-products-inner">
-                <div class="le-shop-products-inner__empty">
-                    <h1 class="le-shop-products-inner__empty-title">
-                        В вашем списке избранного пусто
-                    </H1>
-                </div>
-            </div>
-            {% endif %}
+      {% if products.size > 0 %}
+        <div class="le-shop-products-inner">
+          {%- for product in products %}
+            <a href="{{ product.url }}" class="le-shop-product{% if is_available %} le-shop-product_available{% endif %}">
+              <img src="{{ product.images.first.medium_url }}" alt="{{ product.title }}" class="le-shop-product__pic">
+              <div class="le-shop-product__title">{{ product.title }}</div>
+              <span class="le-shop-product__price">
+                {% if product.variants.size > 0 %}
+                  {{ product.variants.first.price | money }}
+                {% endif %}
+              </span>
+              <button class="le-shop-product__icon-button" data-ui-favorites-trigger="{{ product.id }}">
+                <img src="{{ 'icon_heart.png' | asset_url }}" alt="heart" class="le-shop-product__icon">
+                <img src="{{ 'icon_heart_filled.png' | asset_url }}" alt="heart" class="le-shop-product__icon_hover">
+              </button>
+            </a>
+          {%- endfor %}
         </div>
+      {% else %}
+        <div class="le-shop-products-inner">
+          <div class="le-shop-products-inner__empty">
+            <h1 class="le-shop-products-inner__empty-title">
+              В вашем списке избранного пусто
+            </h1>
+          </div>
+        </div>
+      {% endif %}
     </div>
+  </div>
 </section>

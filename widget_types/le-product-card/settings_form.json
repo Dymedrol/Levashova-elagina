@@ -13,6 +13,12 @@
           "label":"Показывать наличие в магазине и доставку",
           "type":"checkbox",
           "value": false
+        },
+        {
+          "name":"max_engrave_length",
+          "label":"Максимальная длина гравировки",
+          "type":"number",
+          "value": 10
         }
       ]
     }

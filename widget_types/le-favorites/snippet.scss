@@ -470,6 +470,24 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
     }
   }
 
+  .le-shop-products-inner__title {    color: #000;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Helvetica Neue";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase;
+    margin-bottom: 50px;  
+
+    @media ($XL) {
+      font-size: 62px;
+      line-height: 100%;
+      margin-bottom: 70px;
+    }
+  }
+
   .le-shop-products-inner__empty-title {
     font-family: 'Helvetica Neue';
     font-style: normal;
