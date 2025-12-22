@@ -40,21 +40,6 @@ a {
   }
 }
 
-.temp-nav {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  width: 100px;
-  min-height: 50px;
-  padding: 10px;
-  background-color: lightgray;
-
-  & a {
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
 .micro-alert {
   display: none !important;
 }

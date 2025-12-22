@@ -78,20 +78,35 @@ document.addEventListener('DOMContentLoaded', function() {
       var isOpen = item.classList.contains('open');
 
       if (!isOpen) {
+        // Открываем аккордеон
         item.classList.add('open');
-        content.style.maxHeight = content.scrollHeight + 'px';
+        // Сначала получаем реальную высоту контента
+        var scrollHeight = content.scrollHeight;
+        // Устанавливаем max-height для плавной анимации
+        // Добавляем небольшой запас для избежания обрезки
+        content.style.maxHeight = (scrollHeight + 20) + 'px';
         if (svg) svg.style.transform = 'rotate(180deg)';
       } else {
-        item.classList.remove('open');
-        content.style.maxHeight = null;
-        if (svg) svg.style.transform = '';
+        // Закрываем аккордеон
+        // Сохраняем текущую высоту перед закрытием для плавной анимации
+        var currentHeight = content.scrollHeight;
+        content.style.maxHeight = currentHeight + 'px';
+        
+        // Небольшая задержка для применения стиля, затем начинаем анимацию закрытия
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            item.classList.remove('open');
+            content.style.maxHeight = '0px';
+            if (svg) svg.style.transform = '';
+          });
+        });
       }
     });
   });
 
   // Изначально все скрыты
   document.querySelectorAll('.le-product-accordion__item-content').forEach(function(content) {
-    content.style.maxHeight = null;
+    content.style.maxHeight = '0px';
   });
 });
 

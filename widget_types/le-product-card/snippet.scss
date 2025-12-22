@@ -1,4 +1,3 @@
-
 $XS: "min-width: 360px";
 $S: "min-width: 480px";
 $M: "min-width: 720px";
@@ -684,11 +683,9 @@ $XXXL: "min-width: 1920px";
 }
 
 .le-product-accordion__item-content {
-  display: none;
-
   margin-top: 10px;
   padding: 10px;
-  background: #F6F6F6;
+
   color: var(--Black, #000);
   leading-trim: both;
   text-edge: cap;
@@ -697,20 +694,12 @@ $XXXL: "min-width: 1920px";
   font-style: normal;
   font-weight: 400;
   line-height: 100%; /* 12px */
-  text-transform: uppercase;
 
   @media ($XL) {
-    height: 50px;
     padding: 20px;
-
     font-size: 16px;
     line-height: 100%; /* 16px */
   }
-
-}
-
-.le-product-accordion__item.open .le-product-accordion__item-content {
-  display: block;
 }
 
 
@@ -777,14 +766,30 @@ $XXXL: "min-width: 1920px";
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 .le-product-accordion__item-content {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1);
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .le-product-accordion__item.open .le-product-accordion__item-content {
   /* max-height выставляется через JS */
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @media ($XL) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
+
 .le-product-accordion__item-header svg {
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
