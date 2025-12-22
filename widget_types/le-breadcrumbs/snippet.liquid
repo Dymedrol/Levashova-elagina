@@ -1,9 +1,8 @@
 {% assign with_tag = blog.tags.first.current? %}
 {% assign show_last = show_last | default: true %}
 
-
 <div class="container le-product-breadcrumbs">
-    <div class="breadcrumb-wrapper delemeter_{{ widget_settings.delemeter }}">
+    <div class="breadcrumb-wrapper">
         <ul class="breadcrumb">
             <li class="breadcrumb-item home">
                 <a class="breadcrumb-link" title="{{ messages.home }}" href="/">{{ messages.home }}</a>

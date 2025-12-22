@@ -1,37 +1,4 @@
 {
-  "content": [
-    {
-      "type": "group",
-      "name": "{{ messages.delimiter }}",
-      "items": [
-        {
-          "name": "delemeter",
-          "options": [
-            [
-              "/",
-              "1"
-            ],
-            [
-              "-",
-              "2"
-            ],
-            [
-              ">",
-              "3"
-            ],
-            [
-             ".",
-             "4"
-           ]
-          ],
-          "value": null,
-          "label": "{{ messages.delimiter }}",
-          "general": true,
-          "type": "select"
-        }
-      ]
-    }
-  ],
   "design": [
     {
       "type": "group",

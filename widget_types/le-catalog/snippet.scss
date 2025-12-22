@@ -32,7 +32,7 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
   }
   
   .le-shop a:hover {
-    color: original-color;
+    color: var(--Black, #000);
   }
   
   .le-shop-controls {
@@ -113,6 +113,7 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
   
     }
   }
+
   
   .le-shop-controls-top-row__item_active {
     color: var(--Black, #000);
@@ -226,6 +227,21 @@ $desktop_only: "(min-width: 1200px) and (max-width: 1919px)";
     display: flex;
     gap: 10px;
     cursor: pointer;
+  }
+
+  .le-shop-controls-bottom-row__item:hover {
+
+    & .le-shop-controls-bottom-row__item-text {
+      color: #000;
+    }
+    
+    & svg path {
+      fill-opacity: 1;
+    }
+
+    & svg rect {
+      stroke-opacity: 1;
+    }
   }
   
   .le-shop-controls-bottom-row__item input {

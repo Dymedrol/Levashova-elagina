@@ -102,7 +102,7 @@
                       <div class="le-product-form-item-controls le-product-form-item-controls_engrave">
                           <div class="le-product-form-item-controls__button le-product-form-item-controls__button_engrave">+ <span id="product-accessory-price"></span></div>
                           <input maxlength="{{ widget_settings.max_engrave_length }}" class="le-product-form-item-controls__input_engrave" type="text" name="engrave" id="engrave" placeholder="текст">
-                          <a href="{{ widget_settings.sizes_link }}" class="le-product-form-item-controls-link_engrave">правила гравировки</a>
+                          <a href="{{ widget_settings.engrave_link }}" class="le-product-form-item-controls-link_engrave">правила гравировки</a>
                       </div>
                   </div>
 
@@ -221,9 +221,16 @@
                   </svg>
                 </div>
                 <div class="le-product-accordion__item-content">
-                  {% for variant in product.variants %}
-                    {{ variant.quantity_at_warehouses }}
-                  {% endfor %}
+                  <p id="warehouse"></p>
+                  <p id="delivery-date-wrapper">Ориентировочная дата доставки: <span id="delivery-date"></span></p>
+                  <script> 
+                    window.variantQuantity = {
+                      {% for variant in product.variants %}
+                        {{ variant.id }}: {{ variant.quantity_at_warehouses | replace: '=>', ': ' }},
+                      {% endfor %}
+                    }
+                    window.deliveryDuration = {{ widget_settings.delivery_duration }};
+                  </script>
                 </div>
               </div>
             {% endif %}

@@ -1,32 +1,12 @@
+$XS: "min-width: 360px";
+$S: "min-width: 480px";
+$M: "min-width: 720px";
+$L: "min-width: 960px";
+$XL: "min-width: 1200px";
+$XXL: "min-width: 1440px";
+$XXXL: "min-width: 1920px";
+
 @include background-color(--bg);
-
-&[style*="--delemeter:1"] {
-  .breadcrumb-wrapper ul>*:not(:last-child):after {
-    content: "/";
-  }
-}
-
-&[style*="--delemeter:2"] {
-  .breadcrumb-wrapper ul>*:not(:last-child):after {
-    content: '-';
-    font-size: 1.5rem;
-    vertical-align: middle;
-    line-height: 0;
-    font-family: auto;
-  }
-}
-
-&[style*="--delemeter:3"] {
-  .breadcrumb-wrapper ul>*:not(:last-child):after {
-    content: ">";
-  }
-}
-
-&[style*="--delemeter:4"] {
-  .breadcrumb-wrapper ul>*:not(:last-child):after {
-    content: "\2022";
-  }
-}
 
 @media screen and (min-width: 769px) {
   .breadcrumb-wrapper ul .button-breadcrumb {
@@ -82,23 +62,20 @@
 .le-product-breadcrumbs {
   display: flex;
   gap: 5px;
-  // margin-bottom: 40px;
+  padding-top: 60px;
 
-  @media (min-width: 720px) {
-    // margin-bottom: 74px;
+  @media ($M) {
   }
 
-  @media (min-width: 960px) {
-    // margin-bottom: 74px;
+  @media ($L) {
   }
 
-  @media (min-width: 1200px) {
-    // margin-bottom: 69px;
+  @media ($XL) {
+    padding-top: 100px;
     gap: 15px;
   }
 
-  @media (min-width: 1440px) {
-    // margin-bottom: 69px;
+  @media ($XXL) {
   }
 }
 

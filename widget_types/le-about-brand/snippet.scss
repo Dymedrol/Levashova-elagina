@@ -97,16 +97,6 @@ $XXXL: "min-width: 1920px";
   }
 
   .le-brand__text {
-    leading-trim: both;
-    text-edge: cap;
-    
-    /* Текст_2 */
-    font-family: "Helvetica Neue";
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 110%; /* 17.6px */
-    letter-spacing: -0.32px;
 
     width: 100%;
   
@@ -127,6 +117,24 @@ $XXXL: "min-width: 1920px";
       width: 671px;
     }
 
+    & * {
+      font-family: "Helvetica Neue";
+      leading-trim: both;
+      text-edge: cap;
+      
+      /* Текст_2 */
+      font-family: "Helvetica Neue";
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 110%; /* 17.6px */
+      // letter-spacing: -0.32px;
+    }
+
+    & p {
+
+    }
+
     & a {
       color: var(--Green, #62C554);
     }
@@ -135,11 +143,9 @@ $XXXL: "min-width: 1920px";
       margin-bottom: 0;
     }
 
-    & b {
-        font-weight: 400;
+    & strong, b {
+      font-weight: 400;
     }
-
-
   }
   
   .le-brand-col1 {

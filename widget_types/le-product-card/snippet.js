@@ -211,3 +211,175 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+// Отслеживание изменения варианта и отображение данных по складам
+document.addEventListener('DOMContentLoaded', function() {
+  var warehouseBlock = document.getElementById('warehouse');
+  
+  if (!warehouseBlock || !window.variantQuantity) {
+    return;
+  }
+  
+  // Функция для форматирования даты в формате "дд месяц гггг"
+  function formatDeliveryDate(days) {
+    var months = [
+      'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+      'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+    ];
+    
+    var today = new Date();
+    var deliveryDate = new Date(today);
+    deliveryDate.setDate(today.getDate() + days);
+    
+    var day = deliveryDate.getDate();
+    var month = months[deliveryDate.getMonth()];
+    var year = deliveryDate.getFullYear();
+    
+    return day + ' ' + month + ' ' + year;
+  }
+  
+  // Функция для отображения данных по складам
+  function updateWarehouseDisplay(variantId) {
+    if (!variantId) return;
+    
+    var variantIdNum = parseInt(variantId, 10);
+    var warehouseData = window.variantQuantity[variantIdNum];
+    var deliveryDateWrapper = document.getElementById('delivery-date-wrapper');
+    var deliveryDateElement = document.getElementById('delivery-date');
+    
+    // Очищаем предыдущее содержимое (кроме скрипта с window.variantQuantity)
+    var scriptTag = warehouseBlock.querySelector('script');
+    warehouseBlock.innerHTML = '';
+    if (scriptTag) {
+      warehouseBlock.appendChild(scriptTag);
+    }
+    
+    if (warehouseData) {
+      // Создаем контейнер для данных о складах
+      var dataContainer = document.createElement('div');
+      dataContainer.className = 'warehouse-data';
+      
+      // Проходим по всем складам и выводим те, где товар в наличии
+      var hasItems = false;
+      for (var warehouseName in warehouseData) {
+        if (warehouseData.hasOwnProperty(warehouseName)) {
+          var quantity = parseInt(warehouseData[warehouseName], 10);
+          if (quantity > 0) {
+            hasItems = true;
+            var warehouseItem = document.createElement('div');
+            warehouseItem.className = 'warehouse-item';
+            warehouseItem.textContent = 'Товар в наличии в магазине (' + warehouseName + ')';
+            dataContainer.appendChild(warehouseItem);
+          }
+        }
+      }
+      
+      // Если товара нет ни в одном магазине, выводим соответствующее сообщение
+      if (!hasItems) {
+        var noItemsMessage = document.createElement('div');
+        noItemsMessage.className = 'warehouse-no-items';
+        noItemsMessage.textContent = 'Нет в наличии в магазинах';
+        dataContainer.appendChild(noItemsMessage);
+      }
+      
+      warehouseBlock.appendChild(dataContainer);
+      
+      // Управление видимостью блока с датой доставки
+      if (deliveryDateWrapper) {
+        if (hasItems && window.deliveryDuration !== undefined && window.deliveryDuration !== null && !isNaN(window.deliveryDuration)) {
+          // Показываем блок и обновляем дату доставки
+          deliveryDateWrapper.style.display = '';
+          if (deliveryDateElement) {
+            deliveryDateElement.textContent = formatDeliveryDate(parseInt(window.deliveryDuration, 10));
+          }
+        } else {
+          // Скрываем блок, если товара нет в магазинах или нет данных о доставке
+          deliveryDateWrapper.style.display = 'none';
+        }
+      }
+    } else {
+      // Если данных нет, скрываем блок с датой доставки
+      if (deliveryDateWrapper) {
+        deliveryDateWrapper.style.display = 'none';
+      }
+    }
+  }
+  
+  // Функция для получения текущего ID варианта
+  function getCurrentVariantId() {
+    // Сначала пытаемся найти select с name="variant_d"
+    var variantSelect = document.querySelector('select[name="variant_d"]');
+    if (variantSelect && variantSelect.value) {
+      return variantSelect.value;
+    }
+    
+    // Если не найден, ищем select с name="variant_id"
+    variantSelect = document.querySelector('select[name="variant_id"]');
+    if (variantSelect && variantSelect.value) {
+      return variantSelect.value;
+    }
+    
+    // Ищем скрытое поле variant_id
+    var hiddenInput = document.querySelector('input[name="variant_id"]');
+    if (hiddenInput && hiddenInput.value) {
+      return hiddenInput.value;
+    }
+    
+    return null;
+  }
+  
+  // Обработчик изменения select с name="variant_d"
+  var variantSelectD = document.querySelector('select[name="variant_d"]');
+  if (variantSelectD) {
+    variantSelectD.addEventListener('change', function() {
+      updateWarehouseDisplay(this.value);
+    });
+  }
+  
+  // Обработчик изменения select с name="variant_id" (на случай, если используется он)
+  var variantSelectId = document.querySelector('select[name="variant_id"]');
+  if (variantSelectId) {
+    variantSelectId.addEventListener('change', function() {
+      updateWarehouseDisplay(this.value);
+    });
+  }
+  
+  // Отслеживание изменения варианта через EventBus (система Insales UI)
+  if (typeof EventBus !== 'undefined') {
+    EventBus.subscribe('change_variant:insales:product', function(data) {
+      if (data && data.id) {
+        updateWarehouseDisplay(data.id);
+      }
+    });
+  }
+  
+  // Отслеживаем изменения в скрытом поле variant_id через MutationObserver
+  var hiddenVariantInput = document.querySelector('input[name="variant_id"]');
+  if (hiddenVariantInput) {
+    var hiddenObserver = new MutationObserver(function(mutations) {
+      if (hiddenVariantInput.value) {
+        updateWarehouseDisplay(hiddenVariantInput.value);
+      }
+    });
+    
+    hiddenObserver.observe(hiddenVariantInput, {
+      attributes: true,
+      attributeFilter: ['value']
+    });
+    
+    // Также отслеживаем изменение свойства value напрямую через события
+    var lastValue = hiddenVariantInput.value;
+    setInterval(function() {
+      if (hiddenVariantInput.value !== lastValue) {
+        lastValue = hiddenVariantInput.value;
+        updateWarehouseDisplay(lastValue);
+      }
+    }, 100);
+  }
+  
+  // Обновляем отображение при загрузке страницы с начальным значением
+  var initialVariantId = getCurrentVariantId();
+  if (initialVariantId) {
+    updateWarehouseDisplay(initialVariantId);
+  }
+});

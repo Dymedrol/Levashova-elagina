@@ -52,6 +52,7 @@ $XXXL: "min-width: 1920px";
   display: flex;
   gap: 5px;
   margin-bottom: 40px;
+  padding-top: 60px;
 
   @media ($M) {
     margin-bottom: 40px;
@@ -62,6 +63,7 @@ $XXXL: "min-width: 1920px";
   }
 
   @media ($XL) {
+    padding-top: 100px;
     margin-bottom: 108px;
     gap: 15px;
   }

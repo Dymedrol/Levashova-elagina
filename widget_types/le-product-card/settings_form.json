@@ -3,9 +3,9 @@
     {
       "items": [
         {
-          "name":"sizes_link",
+          "name":"engrave_link",
           "label":"Ссылка на правила гравировки",
-          "type":"text",
+          "type":"link",
           "value": "/"
         },
         {
@@ -19,7 +19,13 @@
           "label":"Максимальная длина гравировки",
           "type":"number",
           "value": 10
-        }
+        },
+        {
+          "name":"delivery_duration",
+          "label":"Время доставки",
+          "type":"number",
+          "value": 3
+        }  
       ]
     }
   ],

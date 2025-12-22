@@ -26,7 +26,7 @@ $XXXL: "min-width: 1920px";
     }
   
     @media ($XXL) {
-      padding-top: 100px;
+      padding-top: 180px;
     }
   }
   
@@ -398,7 +398,7 @@ $XXXL: "min-width: 1920px";
     }
   
     @media ($XL) {
-      font-size: 16px;
+      font-size: 14px;
       line-height: 100%; /* 16px */
       letter-spacing: -0.32px;
     }
@@ -460,7 +460,7 @@ $XXXL: "min-width: 1920px";
     }
   
     @media ($XXL) {
-      flex-wrap: nowrap;
+      // flex-wrap: nowrap;
       gap: 10px;
     }
   }

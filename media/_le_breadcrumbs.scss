@@ -1,7 +1,16 @@
+$XS: "min-width: 360px";
+$S: "min-width: 480px";
+$M: "min-width: 720px";
+$L: "min-width: 960px";
+$XL: "min-width: 1200px";
+$XXL: "min-width: 1440px";
+$XXXL: "min-width: 1920px";
+
 .le-breadcrumbs {
   display: flex;
   gap: 5px;
   margin-bottom: 40px;
+  padding-top: 60px;
 
   @media ($M) {
     margin-bottom: 74px;
@@ -13,6 +22,7 @@
 
   @media ($XL) {
     margin-bottom: 69px;
+    padding-top: 100px;
     gap: 15px;
   }
 
@@ -22,14 +32,12 @@
 }
 
 .le-breadcrumbs__item {
-  color: var(--Black, #000);
-  leading-trim: both;
-  text-edge: cap;
+  color: #000;
   font-family: "Helvetica Neue";
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 10px */
+  line-height: 100%;
   letter-spacing: -0.2px;
   text-transform: uppercase;
 
